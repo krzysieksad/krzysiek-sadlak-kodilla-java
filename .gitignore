@@ -1,5 +1,8 @@
 .gradle
 /build/
+/out/
+/kodilla-testing/build/
+/kodilla-testing/out/
 !gradle/wrapper/gradle-wrapper.jar
 
 ### STS ###
