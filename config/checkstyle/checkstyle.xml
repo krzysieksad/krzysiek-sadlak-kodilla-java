@@ -225,5 +225,9 @@
         <module name="CommentsIndentation"/>
 		<module name="LocalFinalVariableName"/>
 		<module name="FinalParameters"/>
+        <module name="ConstantName">
+            <property name="severity" value="error" />
+            <property name="format" value="^[A-Z][A-Z0-9]*(_[A-Z0-9]+)*$|log" />
+        </module>
     </module>
 </module>
