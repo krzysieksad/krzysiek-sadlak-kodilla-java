@@ -1,9 +1,8 @@
 package com.kodilla.testing.shape;
 
+import java.util.Arrays;
 import org.junit.Assert;
 import org.junit.Test;
-
-import java.util.Arrays;
 
 public class ShapeCollectorTestSuite {
     @Test
@@ -19,6 +18,7 @@ public class ShapeCollectorTestSuite {
         shapeCollector.addFigure(new Triangle(5, 3));
         boolean removal = shapeCollector.removeFigure(new Triangle(5, 3));
         Assert.assertTrue(removal);
+        Assert.assertEquals(shapeCollector.showFigures().size(), 0);
     }
 
     @Test
