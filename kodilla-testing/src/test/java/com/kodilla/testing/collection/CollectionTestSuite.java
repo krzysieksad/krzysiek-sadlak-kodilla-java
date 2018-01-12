@@ -11,16 +11,22 @@ import org.junit.Test;
 public class CollectionTestSuite {
     @Test
     public void testOddNumbersExterminatorEmptyList() {
+        //given
         OddNumbersExterminator exterminator = new OddNumbersExterminator();
+        //when
         List<Integer> empty = exterminator.exterminate(new ArrayList<>());
+        //then
         Assert.assertEquals(empty, new ArrayList<Integer>());
     }
 
     @Test
     public void testOddNumbersExterminatorNormalList() {
+        //given
         OddNumbersExterminator exterminator = new OddNumbersExterminator();
         List<Integer> randomNumbers = new ArrayList<>(Arrays.asList(13,15,38,42,1,48,31,6,418,31,546,187,851,68,41864,18,64,8,641,985));
+        //when
         List<Integer> onlyEven = exterminator.exterminate(randomNumbers);
+        //then
         Assert.assertEquals(onlyEven, Arrays.asList(38,42,48,6,418,546,68,41864,18,64,8));
     }
 
