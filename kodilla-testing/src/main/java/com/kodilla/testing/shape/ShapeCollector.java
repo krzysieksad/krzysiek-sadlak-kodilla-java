@@ -11,17 +11,27 @@ public class ShapeCollector {
     }
 
     public void addFigure(final Shape shape) {
+        this.shapes.add(shape);
     }
 
-    public boolean removeFigure(final Shape shape) {
-        return true;
+    boolean removeFigure(final Shape shape) {
+        if (this.shapes.contains(shape)) {
+            this.shapes.remove(shape);
+            return true;
+        } else {
+            return false;
+        }
     }
 
-    public Shape getFigure(final int n) {
-        return null;
+    Shape getFigure(final int n) {
+        if (this.shapes.size() > n) {
+            return this.shapes.get(n);
+        } else {
+            return null;
+        }
     }
 
     public List<Shape> showFigures() {
-        return null;
+        return this.shapes;
     }
 }

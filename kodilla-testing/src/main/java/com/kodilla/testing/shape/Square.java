@@ -8,10 +8,22 @@ public class Square implements Shape {
     }
 
     public String getShapeName() {
-        return null;
+        return "Square";
     }
 
     public double getField() {
-        return 0;
+        return Math.pow(side, 2);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Square square = (Square) o;
+        return Double.compare(square.side, side) == 0;
     }
 }

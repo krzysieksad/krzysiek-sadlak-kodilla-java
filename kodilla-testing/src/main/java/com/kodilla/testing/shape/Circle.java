@@ -8,10 +8,22 @@ public class Circle implements Shape {
     }
 
     public String getShapeName() {
-        return null;
+        return "Circle";
     }
 
     public double getField() {
-        return 0;
+        return (Math.PI * Math.pow(radius, 2));
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Circle circle = (Circle) o;
+        return Double.compare(circle.radius, radius) == 0;
     }
 }

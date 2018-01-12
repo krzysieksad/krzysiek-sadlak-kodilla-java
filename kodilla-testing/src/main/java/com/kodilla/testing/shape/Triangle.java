@@ -10,10 +10,23 @@ public class Triangle implements Shape {
     }
 
     public String getShapeName() {
-        return null;
+        return "Triangle";
     }
 
     public double getField() {
-        return 0;
+        return ((this.base * this.height) / 2);
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Triangle triangle = (Triangle) o;
+        return Double.compare(triangle.height, height) == 0 &&
+                Double.compare(triangle.base, base) == 0;
     }
 }
