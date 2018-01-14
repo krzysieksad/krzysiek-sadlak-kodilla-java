@@ -1,10 +1,10 @@
 package com.kodilla.testing.forum;
 
 public class ForumPost {
-    String postBody;
-    String author;
+    private final String postBody;
+    private final String author;
 
-    public ForumPost(String postBody, String author) {
+    public ForumPost(final String postBody, final String author) {
         this.postBody = postBody;
         this.author = author;
     }
@@ -18,13 +18,19 @@ public class ForumPost {
     }
 
     @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
 
         ForumPost forumPost = (ForumPost) o;
 
-        if (!postBody.equals(forumPost.postBody)) return false;
+        if (!postBody.equals(forumPost.postBody)) {
+            return false;
+        }
         return author.equals(forumPost.author);
     }
 
