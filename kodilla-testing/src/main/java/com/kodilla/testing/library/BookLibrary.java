@@ -27,4 +27,8 @@ public class BookLibrary {
         bookList = resultList;
         return bookList;
     }
+
+    public List<Book> listBooksInHandsOf(final LibraryUser libraryUser) {
+        return null;
+    }
 }
