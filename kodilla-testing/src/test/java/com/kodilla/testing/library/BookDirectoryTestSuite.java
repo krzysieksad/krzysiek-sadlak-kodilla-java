@@ -8,6 +8,7 @@ import static org.mockito.Mockito.verify;
 import static org.mockito.Mockito.when;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 import org.junit.Test;
 
@@ -88,9 +89,8 @@ public class BookDirectoryTestSuite {
         //given
         LibraryDatabase libraryDatabaseMock = mock(LibraryDatabase.class);
         BookLibrary bookLibrary = new BookLibrary(libraryDatabaseMock);
-        List<Book> resultListOf0Books = new ArrayList<>();
         LibraryUser libraryUser = new LibraryUser("Adam", "Słodowy", "75121532558");
-        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(resultListOf0Books);
+        when(libraryDatabaseMock.listBooksInHandsOf(libraryUser)).thenReturn(Collections.emptyList());
 
         //when
         List<Book> booksHeld = bookLibrary.listBooksInHandsOf(libraryUser);
