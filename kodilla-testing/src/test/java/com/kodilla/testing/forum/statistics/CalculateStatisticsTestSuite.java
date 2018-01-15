@@ -10,7 +10,7 @@ import org.junit.Test;
 
 public class CalculateStatisticsTestSuite {
     @Test
-    public void testCalculateAdvStatistics1() {
+    public void testCalculateAdvStatisticsIfAll0() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 0;
@@ -29,13 +29,13 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("usersAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("postsAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("commentsAmount"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0, won't be counted
     }
 
     @Test
-    public void testCalculateAdvStatistics2() {
+    public void testCalculateAdvStatisticsOfUsers100() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 0;
@@ -59,11 +59,11 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("commentsAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0, won't be counted
     }
 
     @Test
-    public void testCalculateAdvStatistics3() {
+    public void testCalculateAdvStatisticsOfComments4() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 0;
@@ -82,13 +82,13 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("usersAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("postsAmount"), 0);
         Assert.assertEquals(4, calculate.showStatistics().get("commentsAmount"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0, won't be counted
     }
 
     @Test
-    public void testCalculateAdvStatistics4() {
+    public void testCalculateAdvStatisticsOfComment7Users100() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 0;
@@ -112,11 +112,11 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(7, calculate.showStatistics().get("commentsAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0);
         Assert.assertEquals(0.07, calculate.showStatistics().get("avgCommentsPerUser"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0, won't be counted
     }
 
     @Test
-    public void testCalculateAdvStatistics5() {
+    public void testCalculateAdvStatisticsOfCommentsNegative4() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 0;
@@ -135,13 +135,13 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("usersAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("postsAmount"), 0);
         Assert.assertEquals(-4, calculate.showStatistics().get("commentsAmount"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0
-        //Assert.assertEquals(-0.04, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0, won't be counted
     }
 
     @Test
-    public void testCalculateAdvStatistics6() {
+    public void testCalculateAdvStatisticsOfCommentsNegative6Users100() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 0;
@@ -165,11 +165,11 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(-6, calculate.showStatistics().get("commentsAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0);
         Assert.assertEquals(-0.06, calculate.showStatistics().get("avgCommentsPerUser"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0); //division by 0, won't be counted
     }
 
     @Test
-    public void testCalculateAdvStatistics7() {
+    public void testCalculateAdvStatisticsOfPosts1000() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 1000;
@@ -188,13 +188,13 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("usersAmount"), 0);
         Assert.assertEquals(1000, calculate.showStatistics().get("postsAmount"), 0);
         Assert.assertEquals(0, calculate.showStatistics().get("commentsAmount"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0, won't be counted
         Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerPost"), 0);
     }
 
     @Test
-    public void testCalculateAdvStatistics8() {
+    public void testCalculateAdvStatisticsOfPosts1000Users100() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 1000;
@@ -222,7 +222,7 @@ public class CalculateStatisticsTestSuite {
     }
 
     @Test
-    public void testCalculateAdvStatistics9() {
+    public void testCalculateAdvStatisticsOfPosts1000Comments6876() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 1000;
@@ -241,13 +241,13 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("usersAmount"), 0);
         Assert.assertEquals(1000, calculate.showStatistics().get("postsAmount"), 0);
         Assert.assertEquals(6876, calculate.showStatistics().get("commentsAmount"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0, won't be counted
         Assert.assertEquals(6.876, calculate.showStatistics().get("avgCommentsPerPost"), 0);
     }
 
     @Test
-    public void testCalculateAdvStatistics10() {
+    public void testCalculateAdvStatisticsOfPosts1000Comments4089Users100() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 1000;
@@ -275,7 +275,7 @@ public class CalculateStatisticsTestSuite {
     }
 
     @Test
-    public void testCalculateAdvStatistics11() {
+    public void testCalculateAdvStatisticsOfPosts1000Comments256() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 1000;
@@ -294,13 +294,13 @@ public class CalculateStatisticsTestSuite {
         Assert.assertEquals(0, calculate.showStatistics().get("usersAmount"), 0);
         Assert.assertEquals(1000, calculate.showStatistics().get("postsAmount"), 0);
         Assert.assertEquals(256, calculate.showStatistics().get("commentsAmount"), 0);
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0
-        //Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0
+        Assert.assertEquals(0, calculate.showStatistics().get("avgPostsPerUser"), 0); //division by 0, won't be counted
+        Assert.assertEquals(0, calculate.showStatistics().get("avgCommentsPerUser"), 0); //division by 0, won't be counted
         Assert.assertEquals(0.256, calculate.showStatistics().get("avgCommentsPerPost"), 0);
     }
 
     @Test
-    public void testCalculateAdvStatistics12() {
+    public void testCalculateAdvStatisticsOfPosts1000Comments725Users100() {
         //given
         Statistics statisticsMock = mock(Statistics.class);
         int postsCount = 1000;

@@ -19,9 +19,13 @@ public class CalculateStatistics {
         this.usersAmount = statistics.usersNames().size();
         this.postsAmount = statistics.postsCount();
         this.commentsAmount = statistics.commentsCount();
-        this.avgPostsPerUser = (double) statistics.postsCount() / (double) statistics.usersNames().size();
-        this.avgCommentsPerUser = (double) statistics.commentsCount() / (double) statistics.usersNames().size();
-        this.avgCommentsPerPost = (double) statistics.commentsCount() / (double) statistics.postsCount();
+        if (statistics.usersNames().size() != 0) {
+            this.avgPostsPerUser = (double) statistics.postsCount() / (double) statistics.usersNames().size();
+            this.avgCommentsPerUser = (double) statistics.commentsCount() / (double) statistics.usersNames().size();
+        }
+        if (statistics.postsCount() != 0) {
+            this.avgCommentsPerPost = (double) statistics.commentsCount() / (double) statistics.postsCount();
+        }
     }
 
     /**
