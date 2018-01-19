@@ -1,10 +1,8 @@
 package com.kodilla.stream;
 
 import com.kodilla.stream.beautifier.PoemBeautifier;
-import com.kodilla.stream.beautifier.PoemDecorator;
-import com.kodilla.stream.lambda.Executor;
+import com.kodilla.stream.iterate.NumbersGenerator;
 import com.kodilla.stream.lambda.ExpressionExecutor;
-import com.kodilla.stream.lambda.Processor;
 import com.kodilla.stream.reference.FunctionalCalculator;
 
 public class StreamMain {
@@ -40,5 +38,10 @@ public class StreamMain {
                                 (poem) -> ("try reading that: " + poem).replaceAll("[\n :]", "").toLowerCase());
         System.out.println("");
         poemBeautifier.beautify("Raindrops on this page\nWind blows my paper away\nOh crap! I need that...\n", (poem) -> "I hate poems!");
+
+        System.out.println("\nSubmodule 7.2.:");
+
+        System.out.println("Using Stream to generate even numbers from 1 to 20");
+        NumbersGenerator.generateEven(20);
     }
 }
