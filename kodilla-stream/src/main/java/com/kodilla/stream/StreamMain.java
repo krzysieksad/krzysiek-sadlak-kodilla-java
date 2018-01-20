@@ -16,7 +16,7 @@ import java.util.stream.Collectors;
 
 public class StreamMain {
     /**
-     * Class for submodule 7
+     * Class for submodule 7.
      * @param args just args
      */
     public static void main(final String[] args) {
