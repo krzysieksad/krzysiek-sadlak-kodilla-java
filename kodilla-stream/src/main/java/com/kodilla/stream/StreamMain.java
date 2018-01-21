@@ -8,7 +8,10 @@ import com.kodilla.stream.reference.FunctionalCalculator;*/
 
 import com.kodilla.stream.book.Book;
 import com.kodilla.stream.book.BookDirectory;
+import com.kodilla.stream.forumuser.Forum;
+import com.kodilla.stream.forumuser.ForumUser;
 
+import java.time.LocalDate;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -20,13 +23,26 @@ public class StreamMain {
      * @param args just args
      */
     public static void main(final String[] args) {
-        BookDirectory theBookDirectory = new BookDirectory();
+        Forum forum = new Forum();
+        Map<Integer, ForumUser> users = forum.getUserList().stream()
+                .filter(user -> user.getSex() == 'M')
+                .filter(user -> user.getBirthDate().getYear() <= (LocalDate.now().getYear() - 20))
+                .filter(user -> user.getPostsPublished() > 0)
+                .collect(Collectors.toMap(ForumUser::getId, user -> user));
+
+        System.out.println("# elements: " + users.size());
+        users.entrySet().stream()
+                .map(entry -> entry.getKey() + ": " + entry.getValue())
+                .forEach(System.out::println);
+
+        //submodule 7.3
+        /*BookDirectory theBookDirectory = new BookDirectory();
         String theResultStringOfBooks = theBookDirectory.getList().stream()
                 .filter(book -> book.getYearOfPublication() > 2005)
                 .map(Book::toString)
                 .collect(Collectors.joining(",\n","<<",">>"));
 
-        System.out.println(theResultStringOfBooks);
+        System.out.println(theResultStringOfBooks);*/
 
         //Deleted in submodule 7.3, chapter 'Kolektor Collectors.joining()'
         /*BookDirectory theBookDirectory = new BookDirectory();
