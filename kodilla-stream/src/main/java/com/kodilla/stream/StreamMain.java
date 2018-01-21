@@ -21,6 +21,8 @@ public class StreamMain {
      */
     public static void main(final String[] args) {
         //Task 7.3
+        System.out.println("\nTask 7.3.:");
+
         Forum forum = new Forum();
         Map<Integer, ForumUser> users = forum.getUserList().stream()
                 .filter(user -> user.getSex() == 'M')
@@ -80,6 +82,8 @@ public class StreamMain {
         System.out.println("");
 
         //Task 7.1
+        System.out.println("\nTask 7.1.:");
+
         PoemBeautifier poemBeautifier = new PoemBeautifier();
         poemBeautifier.beautify("my poem is beautiful", (poem) -> poem + ", but now is pretty.");
         System.out.println("");
@@ -92,9 +96,10 @@ public class StreamMain {
         System.out.println("");
         poemBeautifier.beautify("Raindrops on this page\nWind blows my paper away\nOh crap! I need that...\n", (poem) -> "I hate poems!");
 
-        System.out.println("\nSubmodule 7.2.:");
+        //Submodule 7.2
+        /*System.out.println("\nSubmodule 7.2.:");
 
         System.out.println("Using Stream to generate even numbers from 1 to 20");
-        NumbersGenerator.generateEven(20);
+        NumbersGenerator.generateEven(20);*/
     }
 }
