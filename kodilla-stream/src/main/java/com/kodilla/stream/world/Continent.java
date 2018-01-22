@@ -15,6 +15,6 @@ public class Continent {
     }
 
     public void addCountries(final List<Country> countryList) {
-        countryList.addAll(countryList);
+        this.countryList.addAll(countryList);
     }
 }
