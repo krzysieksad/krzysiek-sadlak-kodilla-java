@@ -1,6 +1,7 @@
 package com.kodilla.stream.world;
 
 import java.math.BigDecimal;
+import java.util.Arrays;
 
 import org.junit.Assert;
 import org.junit.Test;
@@ -49,34 +50,10 @@ public class WorldTestSuite {
         Country bolivia = new Country(new BigDecimal("11217864"));
         Country venezuela = new Country(new BigDecimal("31568179"));
 
-        europe.addCountry(poland);
-        europe.addCountry(germany);
-        europe.addCountry(scotland);
-        europe.addCountry(spain);
-        europe.addCountry(finland);
-        europe.addCountry(norway);
-        europe.addCountry(iceland);
-        asia.addCountry(southKorea);
-        asia.addCountry(china);
-        asia.addCountry(japan);
-        asia.addCountry(thailand);
-        asia.addCountry(kazakhstan);
-        asia.addCountry(india);
-        asia.addCountry(cambodia);
-        africa.addCountry(kenya);
-        africa.addCountry(ethiopia);
-        africa.addCountry(nigeria);
-        africa.addCountry(ghana);
-        africa.addCountry(egypt);
-        africa.addCountry(tanzania);
-        africa.addCountry(democraticRepublicOfCongo);
-        southAmerica.addCountry(argentina);
-        southAmerica.addCountry(brazil);
-        southAmerica.addCountry(peru);
-        southAmerica.addCountry(colombia);
-        southAmerica.addCountry(chile);
-        southAmerica.addCountry(bolivia);
-        southAmerica.addCountry(venezuela);
+        europe.addCountries(Arrays.asList(poland,germany,scotland,spain,finland,norway,iceland));
+        asia.addCountries(Arrays.asList(southKorea,china,japan,thailand,kazakhstan,india,cambodia));
+        africa.addCountries(Arrays.asList(kenya,ethiopia,nigeria,ghana,egypt,tanzania,democraticRepublicOfCongo));
+        southAmerica.addCountries(Arrays.asList(argentina,brazil,peru,colombia,chile,bolivia,venezuela));
 
         //when
         BigDecimal totalPopulation = earth.getPeopleQuantity();
