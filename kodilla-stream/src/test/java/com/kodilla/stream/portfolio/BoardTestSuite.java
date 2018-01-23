@@ -3,10 +3,13 @@ package com.kodilla.stream.portfolio;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.OptionalDouble;
+import java.util.stream.IntStream;
 
 import org.junit.Assert;
 import org.junit.Test;
 
+import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
 
 public class BoardTestSuite {
@@ -139,5 +142,26 @@ public class BoardTestSuite {
 
         //Then
         Assert.assertEquals(2, longTasks);
+    }
+
+    @Test
+    public void testAddTaskListAverageWorkingOnTask() {
+        //given
+        Board project = prepareTestData();
+
+        //when
+        List<TaskList> inProgressTasks = new ArrayList<>();
+        inProgressTasks.add(new TaskList("In progress"));
+        List<Integer> workDaysList = project.getTaskLists().stream()
+                .filter(inProgressTasks::contains)
+                .flatMap(tl -> tl.getTasks().stream())
+                .map(t -> (int) DAYS.between(t.getCreated(), LocalDate.now()))
+                .collect(toList());
+        OptionalDouble averageWorkingOnTask = IntStream.range(0, workDaysList.size())
+                .map(workDaysList::get)
+                .average();
+
+        //then
+        Assert.assertEquals(10D, averageWorkingOnTask.getAsDouble(), 0);
     }
 }
