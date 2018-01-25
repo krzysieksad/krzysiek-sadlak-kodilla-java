@@ -7,19 +7,17 @@ import org.junit.Assert;
 import org.junit.Test;
 
 public class WorldTestSuite {
-    @Test
-    public void testGetPeopleQuantity() {
-        //given
-        World earth = new World();
+    private World prepareTestData() {
+        World newWorld = new World();
         Continent europe = new Continent();
         Continent asia = new Continent();
         Continent africa = new Continent();
         Continent southAmerica = new Continent();
 
-        earth.addContinent(europe);
-        earth.addContinent(asia);
-        earth.addContinent(africa);
-        earth.addContinent(southAmerica);
+        newWorld.addContinent(europe);
+        newWorld.addContinent(asia);
+        newWorld.addContinent(africa);
+        newWorld.addContinent(southAmerica);
 
         Country poland = new Country(new BigDecimal("38422346"));
         Country germany = new Country(new BigDecimal("82800000"));
@@ -54,6 +52,14 @@ public class WorldTestSuite {
         asia.addCountries(Arrays.asList(southKorea,china,japan,thailand,kazakhstan,india,cambodia));
         africa.addCountries(Arrays.asList(kenya,ethiopia,nigeria,ghana,egypt,tanzania,democraticRepublicOfCongo));
         southAmerica.addCountries(Arrays.asList(argentina,brazil,peru,colombia,chile,bolivia,venezuela));
+
+        return newWorld;
+    }
+
+    @Test
+    public void testGetPeopleQuantity() {
+        //given
+        World earth = prepareTestData();
 
         //when
         BigDecimal totalPopulation = earth.getPeopleQuantity();
