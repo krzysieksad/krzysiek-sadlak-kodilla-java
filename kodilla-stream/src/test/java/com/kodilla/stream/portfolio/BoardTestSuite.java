@@ -157,11 +157,11 @@ public class BoardTestSuite {
                 .flatMap(tl -> tl.getTasks().stream())
                 .map(t -> (int) DAYS.between(t.getCreated(), LocalDate.now()))
                 .collect(toList());
-        OptionalDouble averageWorkingOnTask = IntStream.range(0, workDaysList.size())
+        double averageWorkingOnTask = IntStream.range(0, workDaysList.size())
                 .map(workDaysList::get)
-                .average();
+                .average().getAsDouble();
 
         //then
-        Assert.assertEquals(10D, averageWorkingOnTask.getAsDouble(), 0);
+        Assert.assertEquals(10D, averageWorkingOnTask, 0);
     }
 }
