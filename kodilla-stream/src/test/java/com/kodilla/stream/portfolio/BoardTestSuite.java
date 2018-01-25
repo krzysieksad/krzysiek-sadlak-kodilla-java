@@ -1,16 +1,15 @@
 package com.kodilla.stream.portfolio;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.OptionalDouble;
-import java.util.stream.IntStream;
 
 import org.junit.Assert;
 import org.junit.Test;
 
-import static java.time.temporal.ChronoUnit.DAYS;
 import static java.util.stream.Collectors.toList;
+
 
 public class BoardTestSuite {
     /**
@@ -152,16 +151,14 @@ public class BoardTestSuite {
         //when
         List<TaskList> inProgressTasks = new ArrayList<>();
         inProgressTasks.add(new TaskList("In progress"));
-        List<Integer> workDaysList = project.getTaskLists().stream()
+        double workDaysAverage = project.getTaskLists().stream()
                 .filter(inProgressTasks::contains)
                 .flatMap(tl -> tl.getTasks().stream())
-                .map(t -> (int) DAYS.between(t.getCreated(), LocalDate.now()))
-                .collect(toList());
-        double averageWorkingOnTask = IntStream.range(0, workDaysList.size())
-                .map(workDaysList::get)
+                //.mapToInt(t -> (int) DAYS.between(t.getCreated(), LocalDate.now()))
+                .mapToInt(t -> Period.between(t.getCreated(), LocalDate.now()).getDays())
                 .average().getAsDouble();
 
         //then
-        Assert.assertEquals(10D, averageWorkingOnTask, 0);
+        Assert.assertEquals(10D, workDaysAverage, 0);
     }
 }
