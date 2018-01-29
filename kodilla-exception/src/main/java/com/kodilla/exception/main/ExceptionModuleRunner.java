@@ -1,11 +1,19 @@
 package com.kodilla.exception.main;
 
 import com.kodilla.exception.io.FileReader;
-import com.kodilla.exception.io.FileReaderWithoutHandling;
+import com.kodilla.exception.io.FileReaderException;
 
 public class ExceptionModuleRunner {
+    /**
+     * Read file.
+     * @param args args
+     */
     public static void main(final String[] args) {
-        FileReaderWithoutHandling fileReader = new FileReaderWithoutHandling();
-        //fileReader.readFile();
+        FileReader fileReader = new FileReader();
+        try {
+            fileReader.readFile();
+        } catch (FileReaderException e) {
+            System.out.println("Problem while reading a file!");
+        }
     }
 }
