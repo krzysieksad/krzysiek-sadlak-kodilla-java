@@ -25,9 +25,6 @@ public class FlightFinder {
      * @return is possible to fly
      */
     public boolean findFlight(final Flight flight) throws RouteNotFoundException {
-
-
-
         if (flights.containsKey(flight.getArrivalAirport())) {
             return flights.get(flight.getArrivalAirport());
         } else {
