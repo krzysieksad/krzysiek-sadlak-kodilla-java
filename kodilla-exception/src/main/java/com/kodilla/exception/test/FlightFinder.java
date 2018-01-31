@@ -4,13 +4,12 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class FlightFinder {
+    private final Map<String, Boolean> flights = new HashMap<>();
+
     /**
-     * Task 8.4.
-     * @param flight search for flight
-     * @return is possible to fly
+     * Create Flight list.
      */
-    public boolean findFlight(final Flight flight) throws RouteNotFoundException {
-        Map<String, Boolean> flights = new HashMap<>();
+    public FlightFinder() {
         flights.put("Barcelona", true);
         flights.put("London", false);
         flights.put("Moscow", true);
@@ -18,6 +17,16 @@ public class FlightFinder {
         flights.put("Buenos Aires", true);
         flights.put("Los Ageles", false);
         flights.put("Tokio", true);
+    }
+
+    /**
+     * Task 8.4.
+     * @param flight search for flight
+     * @return is possible to fly
+     */
+    public boolean findFlight(final Flight flight) throws RouteNotFoundException {
+
+
 
         if (flights.containsKey(flight.getArrivalAirport())) {
             return flights.get(flight.getArrivalAirport());
