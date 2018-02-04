@@ -1,8 +1,7 @@
 package com.kodilla.good.patterns.challenges.service;
 
-import com.kodilla.good.patterns.challenges.misc.User;
-import com.kodilla.good.patterns.challenges.items.Item;
+import com.kodilla.good.patterns.challenges.misc.Order;
 
 public interface OrderService {
-    boolean order(final User user, final Item item);
+    boolean order(final Order order);
 }

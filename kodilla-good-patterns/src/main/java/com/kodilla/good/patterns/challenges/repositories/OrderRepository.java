@@ -1,8 +1,7 @@
 package com.kodilla.good.patterns.challenges.repositories;
 
-import com.kodilla.good.patterns.challenges.items.Item;
-import com.kodilla.good.patterns.challenges.misc.User;
+import com.kodilla.good.patterns.challenges.misc.Order;
 
 public interface OrderRepository {
-    void createOrder(final User user, final Item item);
+    void createOrder(final Order order);
 }

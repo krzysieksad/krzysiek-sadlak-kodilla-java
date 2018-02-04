@@ -1,9 +1,8 @@
 package com.kodilla.good.patterns.challenges.repositories;
 
-import com.kodilla.good.patterns.challenges.items.Item;
-import com.kodilla.good.patterns.challenges.misc.User;
+import com.kodilla.good.patterns.challenges.misc.Order;
 
 public class ElectronicsRepository implements OrderRepository {
-    public void createOrder(final User user, final Item item) {
+    public void createOrder(final Order order) {
     }
 }

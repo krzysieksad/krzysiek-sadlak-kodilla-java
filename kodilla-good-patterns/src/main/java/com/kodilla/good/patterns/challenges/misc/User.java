@@ -5,6 +5,12 @@ public class User {
     private final String email;
     private final String phoneNumber;
 
+    /**
+     * User data.
+     * @param userName login
+     * @param email email
+     * @param phoneNumber phone
+     */
     public User(final String userName, final String email, final String phoneNumber) {
         this.userName = userName;
         this.email = email;
