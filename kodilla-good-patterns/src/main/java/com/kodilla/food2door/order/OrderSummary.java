@@ -1,12 +1,23 @@
 package com.kodilla.food2door.order;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class OrderSummary {
-    private final double paymentAmount = 0;
-    private final List<String> boughtList = new ArrayList<>();
-    private final List<String> productsUnavailable = new ArrayList<>();
+    private final double paymentAmount;
+    private final List<String> boughtList;
+    private final List<String> productsUnavailable;
+
+    /**
+     * Order summary.
+     * @param paymentAmount price to pay
+     * @param boughtList list of bought products
+     * @param productsUnavailable list of unavailable products
+     */
+    public OrderSummary(final double paymentAmount, final List<String> boughtList, final List<String> productsUnavailable) {
+        this.paymentAmount = paymentAmount;
+        this.boughtList = boughtList;
+        this.productsUnavailable = productsUnavailable;
+    }
 
     public double getPaymentAmount() {
         return paymentAmount;
@@ -18,14 +29,5 @@ public class OrderSummary {
 
     public List<String> getProductsUnavailable() {
         return productsUnavailable;
-    }
-
-    public void addPrice(final double price) {
-    }
-
-    public void addProductToBoughtList(final String product) {
-    }
-
-    public void addProductToUnavailableList(final String product) {
     }
 }

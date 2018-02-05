@@ -2,8 +2,10 @@ package com.kodilla.food2door.producers;
 
 import com.kodilla.food2door.order.Order;
 import com.kodilla.food2door.order.OrderSummary;
-
+import com.kodilla.food2door.order.SingleOrder;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class HealthyShop implements Producer {
@@ -12,7 +14,7 @@ public class HealthyShop implements Producer {
     /**
      * Shop offer.
      */
-    HealthyShop() {
+    public HealthyShop() {
         this.products.put("Tomato", 3.50);
         this.products.put("Cucumber", 3.90);
         this.products.put("Sweet Pepper", 5.90);
@@ -25,7 +27,24 @@ public class HealthyShop implements Producer {
         this.products.put("Brussels", 5.50);
     }
 
+    /**
+     * Processing order of food.
+     * @param order order
+     * @return summary
+     */
     public OrderSummary process(final Order order) {
-        return null;
+        List<String> bought = new ArrayList<>();
+        List<String> unavailable = new ArrayList<>();
+        double price = 0;
+
+        for (SingleOrder singleOrder : order.showOrderList()) {
+            if (products.containsKey(singleOrder.getProduct())) {
+                bought.add(singleOrder.getProduct());
+                price += singleOrder.getAmount() * products.get(singleOrder.getProduct());
+            } else {
+                unavailable.add(singleOrder.getProduct());
+            }
+        }
+        return new OrderSummary(price, bought, unavailable);
     }
 }

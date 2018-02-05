@@ -2,9 +2,13 @@ package com.kodilla.food2door.producers;
 
 import com.kodilla.food2door.order.Order;
 import com.kodilla.food2door.order.OrderSummary;
+import com.kodilla.food2door.order.SingleOrder;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 public class ExtraFoodShop implements Producer {
     private Map<String, Double> products = new HashMap<>();
@@ -12,7 +16,7 @@ public class ExtraFoodShop implements Producer {
     /**
      * Shop offer.
      */
-    ExtraFoodShop() {
+    public ExtraFoodShop() {
         products.put("Apple", 3.49);
         products.put("Banana", 5.49);
         products.put("Orange", 4.90);
@@ -25,7 +29,27 @@ public class ExtraFoodShop implements Producer {
         products.put("Grapes", 7.49);
     }
 
+    /**
+     * Processing order of food.
+     * @param order order
+     * @return summary
+     */
     public OrderSummary process(final Order order) {
-        return null;
+        List<String> toBuyList = order.showOrderList().stream()
+                .filter(singleOrder -> products.containsKey(singleOrder.getProduct()))
+                .map(SingleOrder::getProduct)
+                .collect(Collectors.toList());
+
+        List<String> productUnavailable = order.showOrderList().stream()
+                .filter(singleOrder -> !products.containsKey(singleOrder.getProduct()))
+                .map(SingleOrder::getProduct)
+                .collect(Collectors.toList());
+
+        double payment = order.showOrderList().stream()
+                .filter(singleOrder -> products.containsKey(singleOrder.getProduct()))
+                .mapToDouble(singleOrder -> singleOrder.getAmount() * products.get(singleOrder.getProduct()))
+                .sum();
+
+        return new OrderSummary(payment, toBuyList, productUnavailable);
     }
 }

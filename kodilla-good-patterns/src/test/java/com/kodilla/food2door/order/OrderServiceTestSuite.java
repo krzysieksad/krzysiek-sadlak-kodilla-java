@@ -36,7 +36,7 @@ public class OrderServiceTestSuite {
         OrderSummary orderSummary = orderService.processOrder(order);
 
         //then
-        Assert.assertEquals(990.72, orderSummary.getPaymentAmount(), 0);
+        Assert.assertEquals(960.72, orderSummary.getPaymentAmount(), 0);
         Assert.assertEquals(Arrays.asList("Apple", "Pineapple", "Watermelon", "Lemon", "Lamb", "Grain Cookies", "Fish", "Tomato", "Hot Pepper", "Spinach",
                 "Brussels"), orderSummary.getBoughtList());
         Assert.assertEquals(Arrays.asList("Eggs", "Veal", "Shrimp", "Lemon"), orderSummary.getProductsUnavailable());
