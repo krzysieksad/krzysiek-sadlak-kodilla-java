@@ -4,13 +4,13 @@ import java.util.ArrayDeque;
 import java.util.Queue;
 
 public class Orders {
-    private Queue<Order> orders = new ArrayDeque<>();
+    private Queue<OrderRequest> orderRequests = new ArrayDeque<>();
 
-    public boolean addOrder(final Order order) {
-        return true;
+    public boolean addOrder(final OrderRequest orderRequest) {
+        return orderRequests.offer(orderRequest);
     }
 
-    public Order getOrder() {
-        return null;
+    public OrderRequest getNextOrder() {
+        return orderRequests.poll();
     }
 }

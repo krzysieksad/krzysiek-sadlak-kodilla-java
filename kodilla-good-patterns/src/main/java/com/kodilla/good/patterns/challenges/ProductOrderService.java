@@ -1,6 +1,6 @@
 package com.kodilla.good.patterns.challenges;
 
-import com.kodilla.good.patterns.challenges.misc.Order;
+import com.kodilla.good.patterns.challenges.misc.OrderRequest;
 import com.kodilla.good.patterns.challenges.misc.OrderDto;
 import com.kodilla.good.patterns.challenges.repositories.OrderRepository;
 import com.kodilla.good.patterns.challenges.information.OrderInformation;
@@ -23,7 +23,20 @@ public class ProductOrderService {
         this.orderRepository = orderRepository;
     }
 
-    public OrderDto process(final Order order) {
-        return null;
+    /**
+     * Processing order.
+     * @param orderRequest get next order request
+     * @return DTO
+     */
+    public OrderDto process(final OrderRequest orderRequest) {
+        boolean isOrdered = orderService.order(orderRequest);
+
+        if (isOrdered) {
+            orderInformation.sendOrderInformation(orderRequest.getUser());
+            orderRepository.createOrder(orderRequest);
+            return new OrderDto(orderRequest, true);
+        } else {
+            return new OrderDto(orderRequest, false);
+        }
     }
 }

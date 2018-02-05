@@ -8,7 +8,7 @@ import java.util.stream.Collectors;
 import org.junit.Assert;
 import org.junit.Test;
 
-public class MovieStoreTestSuite {
+public class MovieStorageTestSuite {
     private MovieStore prepareTestData() {
         MovieStore newMovieStore = new MovieStore();
 
