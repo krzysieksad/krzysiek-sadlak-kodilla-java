@@ -2,8 +2,8 @@ package com.kodilla.good.patterns.challenges;
 
 import com.kodilla.good.patterns.challenges.misc.OrderRequest;
 import com.kodilla.good.patterns.challenges.misc.OrderDto;
-import com.kodilla.good.patterns.challenges.repositories.OrderRepository;
 import com.kodilla.good.patterns.challenges.information.OrderInformation;
+import com.kodilla.good.patterns.challenges.misc.OrderRepository;
 import com.kodilla.good.patterns.challenges.service.OrderService;
 
 public class ProductOrderService {
@@ -32,7 +32,7 @@ public class ProductOrderService {
         boolean isOrdered = orderService.order(orderRequest);
 
         if (isOrdered) {
-            orderInformation.sendOrderInformation(orderRequest.getUser());
+            orderInformation.sendOrderInformation(orderRequest.getUser(), "Your order: " + orderRequest.getItem().toString() + ", was just sent to you.");
             orderRepository.createOrder(orderRequest);
             return new OrderDto(orderRequest, true);
         } else {

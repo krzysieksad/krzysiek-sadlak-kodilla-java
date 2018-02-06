@@ -5,8 +5,8 @@ import com.kodilla.good.patterns.challenges.items.Game;
 import com.kodilla.good.patterns.challenges.misc.OrderRequest;
 import com.kodilla.good.patterns.challenges.misc.Orders;
 import com.kodilla.good.patterns.challenges.misc.User;
-import com.kodilla.good.patterns.challenges.repositories.ElectronicsRepository;
-import com.kodilla.good.patterns.challenges.service.GameOrder;
+import com.kodilla.good.patterns.challenges.misc.OrderRepository;
+import com.kodilla.good.patterns.challenges.service.OrderService;
 
 public class Application {
     /**
@@ -18,7 +18,7 @@ public class Application {
         orderQueue.addOrder(new OrderRequest(new User("NewUser", "new_user@kodilla.com.pl", "+48512250069"),
                 new Game("Carmageddon", 6.66)));
 
-        ProductOrderService productOrderService = new ProductOrderService(new EmailSender(), new GameOrder(), new ElectronicsRepository());
+        ProductOrderService productOrderService = new ProductOrderService(new EmailSender(), new OrderService(), new OrderRepository());
         productOrderService.process(orderQueue.getNextOrder());
     }
 }

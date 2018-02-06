@@ -1,24 +1,24 @@
 package com.kodilla.good.patterns.challenges.items;
 
 public class TShirt implements Item {
-    private final String tShirt;
+    private final String tshirt;
     private final String size;
     private final double price;
 
     /**
      * T-shirt.
-     * @param tShirt model
+     * @param tshirt model
      * @param size size
      * @param price price
      */
-    public TShirt(final String tShirt, final String size, final double price) {
-        this.tShirt = tShirt;
+    public TShirt(final String tshirt, final String size, final double price) {
+        this.tshirt = tshirt;
         this.size = size;
         this.price = price;
     }
 
     public String getTShirt() {
-        return tShirt;
+        return tshirt;
     }
 
     public String getSize() {
@@ -31,6 +31,6 @@ public class TShirt implements Item {
 
     @Override
     public String toString() {
-        return tShirt + " in size of " + size + " for " + price;
+        return tshirt + " in size of " + size + " for " + price;
     }
 }
