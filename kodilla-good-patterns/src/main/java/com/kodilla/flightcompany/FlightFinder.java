@@ -3,6 +3,12 @@ package com.kodilla.flightcompany;
 import java.util.List;
 
 public class FlightFinder {
+    private final FlightOffers companyFlights;
+
+    FlightFinder(FlightOffers companyFlights) {
+        this.companyFlights = companyFlights;
+    }
+
     public List<String> findFlightsFromCity(final String city) {
         return null;
     }

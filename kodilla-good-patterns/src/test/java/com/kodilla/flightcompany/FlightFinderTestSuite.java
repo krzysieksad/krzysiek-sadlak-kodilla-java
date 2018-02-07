@@ -43,7 +43,7 @@ public class FlightFinderTestSuite {
     public void testFindFlightsFromCity() {
         //given
         FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder();
+        FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
         List<String> searchResults = finder.findFlightsFromCity("Warszawa");
@@ -56,7 +56,7 @@ public class FlightFinderTestSuite {
     public void testFindFlightsToCity() {
         //given
         FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder();
+        FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
         List<String> searchResults = finder.findFlightsToCity("Warszawa");
@@ -69,7 +69,7 @@ public class FlightFinderTestSuite {
     public void testFindDirectFlightsFromCityToCity() {
         //given
         FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder();
+        FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
         List<String> searchResults = finder.findFlightsFromCityToCity("Katowice", "Lublin", 0);
@@ -82,7 +82,7 @@ public class FlightFinderTestSuite {
     public void testFindFlightsFromCityToCity1Connection() {
         //given
         FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder();
+        FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
         List<String> searchResults = finder.findFlightsFromCityToCity("Katowice", "Lublin", 1);
@@ -95,7 +95,7 @@ public class FlightFinderTestSuite {
     public void testFindFlightsFromCityToCity3Connections() {
         //given
         FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder();
+        FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
         List<String> searchResults = finder.findFlightsFromCityToCity("Katowice", "Lublin", 2);
@@ -117,7 +117,7 @@ public class FlightFinderTestSuite {
     public void testFlightsFromCityToCityNotFound() {
         //given
         FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder();
+        FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
         List<String> searchResults = finder.findFlightsFromCityToCity("Zakopane", "Kraków", 0);
