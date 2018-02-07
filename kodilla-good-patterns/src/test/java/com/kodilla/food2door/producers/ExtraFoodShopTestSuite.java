@@ -10,12 +10,14 @@ import java.util.Arrays;
 
 public class ExtraFoodShopTestSuite {
     private Order prepareOrder() {
+        final Producer extraFoodShop = new ExtraFoodShop();
+
         Order order = new Order();
-        order.addToList(new SingleOrder("ExtraFoodShop", "Apple", 4));
-        order.addToList(new SingleOrder("ExtraFoodShop", "Pineapple", 2));
-        order.addToList(new SingleOrder("ExtraFoodShop", "Watermelon", 8));
-        order.addToList(new SingleOrder("ExtraFoodShop", "Eggs", 20));
-        order.addToList(new SingleOrder("ExtraFoodShop", "Lemon", 5));
+        order.addToList(new SingleOrder(extraFoodShop, "Apple", 4));
+        order.addToList(new SingleOrder(extraFoodShop, "Pineapple", 2));
+        order.addToList(new SingleOrder(extraFoodShop, "Watermelon", 8));
+        order.addToList(new SingleOrder(extraFoodShop, "Eggs", 20));
+        order.addToList(new SingleOrder(extraFoodShop, "Lemon", 5));
         return order;
     }
 

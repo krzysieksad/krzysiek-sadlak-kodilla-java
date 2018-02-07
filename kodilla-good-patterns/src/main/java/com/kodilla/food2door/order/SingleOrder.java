@@ -1,7 +1,9 @@
 package com.kodilla.food2door.order;
 
+import com.kodilla.food2door.producers.Producer;
+
 public class SingleOrder {
-    private final String producer;
+    private final Producer producer;
     private final String product;
     private final int amount;
 
@@ -11,13 +13,13 @@ public class SingleOrder {
      * @param product choose product
      * @param amount choose amount
      */
-    public SingleOrder(final String producer, final String product, final int amount) {
+    public SingleOrder(final Producer producer, final String product, final int amount) {
         this.producer = producer;
         this.product = product;
         this.amount = amount;
     }
 
-    public String getProducer() {
+    public Producer getProducer() {
         return producer;
     }
 
