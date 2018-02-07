@@ -1,19 +1,40 @@
 package com.kodilla.flightcompany;
 
-public class Flight {
-    private final String flightFrom;
-    private final String flightTo;
+import java.util.Objects;
 
-    Flight(final String flightFrom, final String flightTo) {
+public class Flight {
+    private final City flightFrom;
+    private final City flightTo;
+
+    Flight(final City flightFrom, final City flightTo) {
         this.flightFrom = flightFrom;
         this.flightTo = flightTo;
     }
 
-    public String getFlightFrom() {
+    public City getFlightFrom() {
         return flightFrom;
     }
 
-    public String getFlightTo() {
+    public City getFlightTo() {
         return flightTo;
+    }
+
+    @Override
+    public boolean equals(final Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        Flight flight = (Flight) o;
+        return Objects.equals(flightFrom, flight.flightFrom) &&
+                Objects.equals(flightTo, flight.flightTo);
+    }
+
+    @Override
+    public int hashCode() {
+
+        return Objects.hash(flightFrom, flightTo);
     }
 }

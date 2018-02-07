@@ -10,31 +10,41 @@ import java.util.List;
 public class FlightFinderTestSuite {
     private FlightOffers prepareTestData() {
         FlightOffers company = new FlightOffers();
+        City krakow = new City("Kraków");
+        City warszawa = new City("Warszawa");
+        City gdansk = new City("Gdańsk");
+        City lublin = new City("Lublin");
+        City katowice = new City("Katowice");
+        City zakopane = new City("Zakopane");
+        City wroclaw = new City("Wrocław");
 
-        company.addNewFlight(new Flight("Kraków", "Wrocław"));
-        company.addNewFlight(new Flight("Kraków", "Warszawa"));
-        company.addNewFlight(new Flight("Kraków", "Katowice"));
-        company.addNewFlight(new Flight("Kraków", "Lublin"));
-        company.addNewFlight(new Flight("Warszawa", "Kraków"));
-        company.addNewFlight(new Flight("Gdańsk", "Kraków"));
-        company.addNewFlight(new Flight("Lublin", "Katowice"));
-        company.addNewFlight(new Flight("Warszawa", "Wrocław"));
-        company.addNewFlight(new Flight("Warszawa", "Zakopane"));
-        company.addNewFlight(new Flight("Wrocław", "Kraków"));
-        company.addNewFlight(new Flight("Katowice", "Lublin"));
-        company.addNewFlight(new Flight("Warszawa", "Lublin"));
-        company.addNewFlight(new Flight("Katowice", "Kraków"));
-        company.addNewFlight(new Flight("Zakopane", "Lublin"));
-        company.addNewFlight(new Flight("Gdańsk", "Warszawa"));
-        company.addNewFlight(new Flight("Lublin", "Zakopane"));
-        company.addNewFlight(new Flight("Gdańsk", "Katowice"));
-        company.addNewFlight(new Flight("Wrocław", "Gdańsk"));
-        company.addNewFlight(new Flight("Warszawa", "Katowice"));
-        company.addNewFlight(new Flight("Wrocław", "Zakopane"));
-        company.addNewFlight(new Flight("Katowice", "Gdańsk"));
-        company.addNewFlight(new Flight("Zakopane", "Warszawa"));
-        company.addNewFlight(new Flight("Lublin", "Gdańsk"));
-        company.addNewFlight(new Flight("Katowice", "Wrocław"));
+        company.addNewFlight(new Flight(krakow, wroclaw));
+        company.addNewFlight(new Flight(krakow, warszawa));
+        company.addNewFlight(new Flight(krakow, katowice));
+        company.addNewFlight(new Flight(krakow, lublin));
+        company.addNewFlight(new Flight(warszawa, krakow));
+        company.addNewFlight(new Flight(gdansk, krakow));
+        company.addNewFlight(new Flight(lublin, katowice));
+        company.addNewFlight(new Flight(warszawa, wroclaw));
+        company.addNewFlight(new Flight(warszawa, zakopane));
+        company.addNewFlight(new Flight(wroclaw, krakow));
+        company.addNewFlight(new Flight(katowice, lublin));
+        company.addNewFlight(new Flight(warszawa, lublin));
+        company.addNewFlight(new Flight(katowice, krakow));
+        company.addNewFlight(new Flight(zakopane, lublin));
+        company.addNewFlight(new Flight(gdansk, warszawa));
+        company.addNewFlight(new Flight(lublin, zakopane));
+        company.addNewFlight(new Flight(gdansk, katowice));
+        company.addNewFlight(new Flight(wroclaw, gdansk));
+        company.addNewFlight(new Flight(warszawa, katowice));
+        company.addNewFlight(new Flight(wroclaw, zakopane));
+        company.addNewFlight(new Flight(katowice, gdansk));
+        company.addNewFlight(new Flight(zakopane, warszawa));
+        company.addNewFlight(new Flight(lublin, gdansk));
+        company.addNewFlight(new Flight(katowice, wroclaw));
+
+
+
 
         return company;
     }
@@ -46,7 +56,7 @@ public class FlightFinderTestSuite {
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCity("Warszawa");
+        List<String> searchResults = finder.findFlightsFromCity(new City("Warszawa"));
 
         //then
         Assert.assertEquals(Arrays.asList("Katowice", "Kraków", "Lublin", "Wrocław", "Zakopane"), searchResults);
@@ -59,7 +69,7 @@ public class FlightFinderTestSuite {
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsToCity("Warszawa");
+        List<String> searchResults = finder.findFlightsToCity(new City("Warszawa"));
 
         //then
         Assert.assertEquals(Arrays.asList("Gdańsk", "Kraków", "Zakopane"), searchResults);
@@ -72,7 +82,7 @@ public class FlightFinderTestSuite {
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCityToCity("Katowice", "Lublin", 0);
+        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Katowice"), new City("Lublin"), 0);
 
         //then
         Assert.assertEquals(Arrays.asList("Katowice -> Lublin"), searchResults);
@@ -85,7 +95,7 @@ public class FlightFinderTestSuite {
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCityToCity("Katowice", "Lublin", 1);
+        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Katowice"), new City("Lublin"), 1);
 
         //then
         Assert.assertEquals(Arrays.asList("Katowice -> Kraków -> Lublin", "Katowice -> Lublin"), searchResults);
@@ -98,7 +108,7 @@ public class FlightFinderTestSuite {
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCityToCity("Katowice", "Lublin", 2);
+        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Katowice"), new City("Lublin"), 2);
 
         //then
         Assert.assertEquals(Arrays.asList("Katowice -> Gdańsk -> Katowice -> Lublin",
@@ -120,7 +130,7 @@ public class FlightFinderTestSuite {
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCityToCity("Zakopane", "Kraków", 0);
+        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Zakopane"), new City("Kraków"), 0);
 
         //then
         Assert.assertEquals(new ArrayList<String>(), searchResults);

@@ -15,10 +15,11 @@ public class FlightFinder {
      * @param city departure city
      * @return list of destinations
      */
-    public List<String> findFlightsFromCity(final String city) {
+    public List<String> findFlightsFromCity(final City city) {
         return companyFlights.getFlightList().stream()
                 .filter(flight -> flight.getFlightFrom().equals(city))
                 .map(Flight::getFlightTo)
+                .map(City::getCityName)
                 .sorted()
                 .collect(Collectors.toList());
     }
@@ -28,15 +29,16 @@ public class FlightFinder {
      * @param city arrival city
      * @return list of departures
      */
-    public List<String> findFlightsToCity(final String city) {
+    public List<String> findFlightsToCity(final City city) {
         return companyFlights.getFlightList().stream()
                 .filter(flight -> flight.getFlightTo().equals(city))
                 .map(Flight::getFlightFrom)
+                .map(City::getCityName)
                 .sorted()
                 .collect(Collectors.toList());
     }
 
-    public List<String> findFlightsFromCityToCity(final String fromCity, final String toCity, final int maxConnections) {
+    public List<String> findFlightsFromCityToCity(final City fromCity, final City toCity, final int maxConnections) {
         return null;
     }
 }
