@@ -45,8 +45,8 @@ public class OrderServiceTestSuite {
 
         //then
         Assert.assertEquals(960.72, orderSummary.getPaymentAmount(), 0);
-        Assert.assertEquals(Arrays.asList("Apple", "Pineapple", "Watermelon", "Lemon", "Lamb", "Grain Cookies", "Fish", "Tomato", "Hot Pepper", "Spinach",
-                "Brussels"), orderSummary.getBoughtList());
-        Assert.assertEquals(Arrays.asList("Eggs", "Veal", "Shrimp", "Lemon"), orderSummary.getProductsUnavailable());
+        Assert.assertEquals(Arrays.asList("Apple", "Brussels", "Fish", "Grain Cookies", "Hot Pepper", "Lamb", "Lemon", "Pineapple", "Spinach", "Tomato",
+                "Watermelon"), orderSummary.getBoughtList());
+        Assert.assertEquals(Arrays.asList("Eggs", "Lemon", "Shrimp", "Veal"), orderSummary.getProductsUnavailable());
     }
 }
