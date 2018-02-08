@@ -33,7 +33,6 @@ public class FlightFinderTestSuite {
         company.addNewFlight(new Flight(katowice, krakow));
         company.addNewFlight(new Flight(zakopane, lublin));
         company.addNewFlight(new Flight(gdansk, warszawa));
-        company.addNewFlight(new Flight(lublin, zakopane));
         company.addNewFlight(new Flight(gdansk, katowice));
         company.addNewFlight(new Flight(wroclaw, gdansk));
         company.addNewFlight(new Flight(warszawa, katowice));
@@ -76,61 +75,26 @@ public class FlightFinderTestSuite {
     }
 
     @Test
-    public void testFindDirectFlightsFromCityToCity() {
+    public void testFindFlightsWithConnection() {
         //given
         FlightOffers companyFlights = prepareTestData();
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Katowice"), new City("Lublin"), 0);
+        List<String> searchResults = finder.findFlightsWithConnection(new City("Kraków"), new City("Gdańsk"));
 
         //then
-        Assert.assertEquals(Arrays.asList("Katowice -> Lublin"), searchResults);
+        Assert.assertEquals(Arrays.asList("Kraków -> Katowice -> Gdańsk", "Kraków -> Lublin -> Gdańsk", "Kraków -> Wrocław -> Gdańsk"), searchResults);
     }
 
     @Test
-    public void testFindFlightsFromCityToCity1Connection() {
+    public void testFlightsWithConnectionNotFound() {
         //given
         FlightOffers companyFlights = prepareTestData();
         FlightFinder finder = new FlightFinder(companyFlights);
 
         //when
-        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Katowice"), new City("Lublin"), 1);
-
-        //then
-        Assert.assertEquals(Arrays.asList("Katowice -> Kraków -> Lublin", "Katowice -> Lublin"), searchResults);
-    }
-
-    @Test
-    public void testFindFlightsFromCityToCity3Connections() {
-        //given
-        FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder(companyFlights);
-
-        //when
-        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Katowice"), new City("Lublin"), 2);
-
-        //then
-        Assert.assertEquals(Arrays.asList("Katowice -> Gdańsk -> Katowice -> Lublin",
-                "Katowice -> Gdańsk -> Kraków -> Lublin",
-                "Katowice -> Gdańsk -> Warszawa -> Lublin",
-                "Katowice -> Kraków -> Lublin",
-                "Katowice -> Kraków -> Warszawa -> Lublin",
-                "Katowice -> Kraków -> Katowice -> Lublin",
-                "Katowice -> Lublin",
-                "Katowice -> Wrocław -> Kraków -> Lublin",
-                "Katowice -> Wrocław -> Zakopane -> Lublin"),
-                searchResults);
-    }
-
-    @Test
-    public void testFlightsFromCityToCityNotFound() {
-        //given
-        FlightOffers companyFlights = prepareTestData();
-        FlightFinder finder = new FlightFinder(companyFlights);
-
-        //when
-        List<String> searchResults = finder.findFlightsFromCityToCity(new City("Zakopane"), new City("Kraków"), 0);
+        List<String> searchResults = finder.findFlightsWithConnection(new City("Lublin"), new City("Zakopane"));
 
         //then
         Assert.assertEquals(new ArrayList<String>(), searchResults);
