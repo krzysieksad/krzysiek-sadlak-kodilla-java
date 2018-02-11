@@ -1,26 +1,26 @@
 package com.kodilla.food2door.order;
 
-import com.kodilla.food2door.producers.Producer;
+import com.kodilla.food2door.producers.ProducerId;
 
 public class SingleOrder {
-    private final Producer producer;
+    private final ProducerId producerId;
     private final String product;
     private final int amount;
 
     /**
      * Single item to order.
-     * @param producer choose producer
+     * @param producerId choose producer
      * @param product choose product
      * @param amount choose amount
      */
-    public SingleOrder(final Producer producer, final String product, final int amount) {
-        this.producer = producer;
+    public SingleOrder(final ProducerId producerId, final String product, final int amount) {
+        this.producerId = producerId;
         this.product = product;
         this.amount = amount;
     }
 
-    public Producer getProducer() {
-        return producer;
+    public ProducerId getProducerId() {
+        return producerId;
     }
 
     public String getProduct() {

@@ -3,8 +3,6 @@ package com.kodilla.food2door.producers;
 import com.kodilla.food2door.order.Order;
 import com.kodilla.food2door.order.OrderSummary;
 import com.kodilla.food2door.order.SingleOrder;
-
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -12,6 +10,10 @@ import java.util.stream.Collectors;
 
 public class ExtraFoodShop implements Producer {
     private Map<String, Double> products = new HashMap<>();
+
+    public ProducerId getProducerId() {
+        return ProducerId.EXTRA_FOOD_SHOP;
+    }
 
     /**
      * Shop offer.

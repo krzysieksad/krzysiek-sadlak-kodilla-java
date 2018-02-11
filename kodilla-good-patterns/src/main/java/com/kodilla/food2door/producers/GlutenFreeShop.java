@@ -11,6 +11,10 @@ import java.util.stream.Collectors;
 public class GlutenFreeShop implements Producer {
     private Map<String, Double> products = new HashMap<>();
 
+    public ProducerId getProducerId() {
+        return ProducerId.GLUTEN_FREE_SHOP;
+    }
+
     /**
      * Shop offer.
      */

@@ -10,14 +10,12 @@ import java.util.Arrays;
 
 public class GlutenFreeShopTestSuite {
     private Order prepareOrder() {
-        final Producer glutenFreeShop = new GlutenFreeShop();
-
         Order order = new Order();
-        order.addToList(new SingleOrder(glutenFreeShop, "Lamb", 2));
-        order.addToList(new SingleOrder(glutenFreeShop, "Grain Cookies", 4));
-        order.addToList(new SingleOrder(glutenFreeShop, "Veal", 3));
-        order.addToList(new SingleOrder(glutenFreeShop, "Fish", 10));
-        order.addToList(new SingleOrder(glutenFreeShop, "Shrimp", 3));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Lamb", 2));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Grain Cookies", 4));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Veal", 3));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Fish", 10));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Shrimp", 3));
         return order;
     }
 

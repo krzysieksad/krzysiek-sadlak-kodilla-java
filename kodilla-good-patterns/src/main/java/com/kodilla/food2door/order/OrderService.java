@@ -1,12 +1,26 @@
 package com.kodilla.food2door.order;
 
+import com.kodilla.food2door.producers.ExtraFoodShop;
+import com.kodilla.food2door.producers.GlutenFreeShop;
+import com.kodilla.food2door.producers.HealthyShop;
 import com.kodilla.food2door.producers.Producer;
+import com.kodilla.food2door.producers.ProducerId;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Set;
+import java.util.Map;
 import java.util.stream.Collectors;
 
 public class OrderService {
+    private final Map<ProducerId, Producer> producerMap = new HashMap<>();
+
+    OrderService() {
+        producerMap.put(ProducerId.EXTRA_FOOD_SHOP, new ExtraFoodShop());
+        producerMap.put(ProducerId.GLUTEN_FREE_SHOP, new GlutenFreeShop());
+        producerMap.put(ProducerId.HEALTHY_SHOP, new HealthyShop());
+    }
+
     /**
      * Process order.
      * @param order order
@@ -14,17 +28,17 @@ public class OrderService {
      */
     public OrderSummary processOrder(final Order order) {
 
-        Set<Producer> producers = order.showOrderList().stream()
-                .map(SingleOrder::getProducer)
+        Set<ProducerId> producerIds = order.showOrderList().stream()
+                .map(SingleOrder::getProducerId)
                 .collect(Collectors.toSet());
 
         List<OrderSummary> orderSummaryList = new ArrayList<>();
-        for (Producer producer : producers) {
+        for (ProducerId producerId : producerIds) {
             Order singleShopOrder = new Order();
             order.showOrderList().stream()
-                    .filter(singleOrder -> singleOrder.getProducer().equals(producer))
+                    .filter(singleOrder -> singleOrder.getProducerId().equals(producerId))
                     .forEach(singleShopOrder::addToList);
-            orderSummaryList.add(producer.process(singleShopOrder));
+            orderSummaryList.add(producerMap.get(producerId).process(singleShopOrder));
         }
 
         return concatenateSummaries(orderSummaryList);

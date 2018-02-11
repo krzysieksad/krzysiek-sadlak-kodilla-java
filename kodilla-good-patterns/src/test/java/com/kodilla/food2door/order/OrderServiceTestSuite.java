@@ -1,9 +1,6 @@
 package com.kodilla.food2door.order;
 
-import com.kodilla.food2door.producers.ExtraFoodShop;
-import com.kodilla.food2door.producers.GlutenFreeShop;
-import com.kodilla.food2door.producers.HealthyShop;
-import com.kodilla.food2door.producers.Producer;
+import com.kodilla.food2door.producers.ProducerId;
 import org.junit.Assert;
 import org.junit.Test;
 
@@ -11,26 +8,22 @@ import java.util.Arrays;
 
 public class OrderServiceTestSuite {
     private Order prepareOrder() {
-        final Producer extraFoodShop = new ExtraFoodShop();
-        final Producer glutenFreeShop = new GlutenFreeShop();
-        final Producer healthyShop = new HealthyShop();
-
         Order order = new Order();
-        order.addToList(new SingleOrder(extraFoodShop, "Apple", 4));
-        order.addToList(new SingleOrder(extraFoodShop, "Pineapple", 2));
-        order.addToList(new SingleOrder(extraFoodShop, "Watermelon", 8));
-        order.addToList(new SingleOrder(extraFoodShop, "Eggs", 20));
-        order.addToList(new SingleOrder(extraFoodShop, "Lemon", 5));
-        order.addToList(new SingleOrder(glutenFreeShop, "Lamb", 2));
-        order.addToList(new SingleOrder(glutenFreeShop, "Grain Cookies", 4));
-        order.addToList(new SingleOrder(glutenFreeShop, "Veal", 3));
-        order.addToList(new SingleOrder(glutenFreeShop, "Fish", 10));
-        order.addToList(new SingleOrder(glutenFreeShop, "Shrimp", 3));
-        order.addToList(new SingleOrder(healthyShop, "Tomato", 20));
-        order.addToList(new SingleOrder(healthyShop, "Hot Pepper", 15));
-        order.addToList(new SingleOrder(healthyShop, "Spinach", 10));
-        order.addToList(new SingleOrder(healthyShop, "Brussels", 9));
-        order.addToList(new SingleOrder(healthyShop, "Lemon", 30));
+        order.addToList(new SingleOrder(ProducerId.EXTRA_FOOD_SHOP, "Apple", 4));
+        order.addToList(new SingleOrder(ProducerId.EXTRA_FOOD_SHOP, "Pineapple", 2));
+        order.addToList(new SingleOrder(ProducerId.EXTRA_FOOD_SHOP, "Watermelon", 8));
+        order.addToList(new SingleOrder(ProducerId.EXTRA_FOOD_SHOP, "Eggs", 20));
+        order.addToList(new SingleOrder(ProducerId.EXTRA_FOOD_SHOP, "Lemon", 5));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Lamb", 2));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Grain Cookies", 4));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Veal", 3));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Fish", 10));
+        order.addToList(new SingleOrder(ProducerId.GLUTEN_FREE_SHOP, "Shrimp", 3));
+        order.addToList(new SingleOrder(ProducerId.HEALTHY_SHOP, "Tomato", 20));
+        order.addToList(new SingleOrder(ProducerId.HEALTHY_SHOP, "Hot Pepper", 15));
+        order.addToList(new SingleOrder(ProducerId.HEALTHY_SHOP, "Spinach", 10));
+        order.addToList(new SingleOrder(ProducerId.HEALTHY_SHOP, "Brussels", 9));
+        order.addToList(new SingleOrder(ProducerId.HEALTHY_SHOP, "Lemon", 30));
         return order;
     }
 

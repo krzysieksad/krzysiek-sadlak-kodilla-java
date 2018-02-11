@@ -11,6 +11,10 @@ import java.util.Map;
 public class HealthyShop implements Producer {
     private Map<String, Double> products = new HashMap<>();
 
+    public ProducerId getProducerId() {
+        return ProducerId.HEALTHY_SHOP;
+    }
+
     /**
      * Shop offer.
      */
