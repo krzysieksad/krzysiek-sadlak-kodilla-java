@@ -5,7 +5,7 @@ import java.util.Objects;
 public class City {
     private final String cityName;
 
-    public City(final String cityName) {
+    City(final String cityName) {
         this.cityName = cityName;
     }
 
@@ -28,5 +28,9 @@ public class City {
     @Override
     public int hashCode() {
         return Objects.hash(cityName);
+    }
+
+    public int compare(final City city2) {
+        return this.getCityName().compareTo(city2.getCityName());
     }
 }
