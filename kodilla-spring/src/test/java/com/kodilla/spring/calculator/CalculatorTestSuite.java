@@ -9,14 +9,14 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.test.context.junit4.SpringRunner;
 
 @RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(classes = Display.class)
 public class CalculatorTestSuite {
 
     @Test
     public void testCalculations() {
         //given
         ApplicationContext context = new AnnotationConfigApplicationContext("com.kodilla.spring");
-        Calculator calculator = new Calculator();
+        Calculator calculator = context.getBean(Calculator.class);
 
         //when
         double addResult = calculator.add(6,15.1);
@@ -26,8 +26,8 @@ public class CalculatorTestSuite {
 
         //then
         Assert.assertEquals(21.1, addResult, 0);
-        Assert.assertEquals(-17.68, subResult, 0);
-        Assert.assertEquals(126.3, mulResult, 0);
+        Assert.assertEquals(-17.68, subResult, 5);
+        Assert.assertEquals(126.3, mulResult, 5);
         Assert.assertEquals(24.3, divResult, 0);
     }
 }
