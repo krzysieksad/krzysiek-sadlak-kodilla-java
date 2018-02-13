@@ -1,47 +1,45 @@
 package com.kodilla.food2door.order;
 
-import com.kodilla.food2door.producers.ExtraFoodShop;
-import com.kodilla.food2door.producers.GlutenFreeShop;
-import com.kodilla.food2door.producers.HealthyShop;
 import com.kodilla.food2door.producers.Producer;
 import com.kodilla.food2door.producers.ProducerId;
-import java.util.ArrayList;
+import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
-import java.util.Set;
-import java.util.Map;
-import java.util.stream.Collectors;
+import java.util.ArrayList;
 
 public class OrderService {
-    private final Map<ProducerId, Producer> producerMap = new HashMap<>();
+    private final Map<ProducerId, Producer> producerMap;
 
-    OrderService() {
-        producerMap.put(ProducerId.EXTRA_FOOD_SHOP, new ExtraFoodShop());
-        producerMap.put(ProducerId.GLUTEN_FREE_SHOP, new GlutenFreeShop());
-        producerMap.put(ProducerId.HEALTHY_SHOP, new HealthyShop());
+    public OrderService(final Map<ProducerId, Producer> producerMap) {
+        this.producerMap = producerMap;
     }
 
     /**
      * Process order.
+     *
      * @param order order
      * @return summary
      */
     public OrderSummary processOrder(final Order order) {
-
-        Set<ProducerId> producerIds = order.showOrderList().stream()
-                .map(SingleOrder::getProducerId)
-                .collect(Collectors.toSet());
+        Map<ProducerId, Order> orderMap = new HashMap<>();
+        order.showOrderList().forEach(singleOrder -> addSingleOrderToMap(orderMap, singleOrder.getProducerId(), singleOrder));
 
         List<OrderSummary> orderSummaryList = new ArrayList<>();
-        for (ProducerId producerId : producerIds) {
-            Order singleShopOrder = new Order();
-            order.showOrderList().stream()
-                    .filter(singleOrder -> singleOrder.getProducerId().equals(producerId))
-                    .forEach(singleShopOrder::addToList);
-            orderSummaryList.add(producerMap.get(producerId).process(singleShopOrder));
+
+        for (Map.Entry<ProducerId, Order> entry : orderMap.entrySet()) {
+            orderSummaryList.add(producerMap.get(entry.getKey()).process(entry.getValue()));
         }
 
         return concatenateSummaries(orderSummaryList);
+    }
+
+    private void addSingleOrderToMap(final Map<ProducerId, Order> orderMap, final ProducerId key, final SingleOrder value) {
+        if (orderMap.containsKey(key)) {
+            orderMap.get(key).addToList(value);
+        } else {
+            orderMap.put(key, new Order());
+            orderMap.get(key).addToList(value);
+        }
     }
 
     private OrderSummary concatenateSummaries(final List<OrderSummary> summaryList) {

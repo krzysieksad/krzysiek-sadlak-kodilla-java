@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class DirectFlightFinderTestSuite {
+public class FlightFinderTestSuite {
     private final City krakow = new City("Kraków");
     private final City warszawa = new City("Warszawa");
     private final City gdansk = new City("Gdańsk");

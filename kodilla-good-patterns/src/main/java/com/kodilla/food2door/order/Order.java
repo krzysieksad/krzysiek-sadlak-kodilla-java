@@ -4,7 +4,15 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Order {
-    private final List<SingleOrder> orderList = new ArrayList<>();
+    private final List<SingleOrder> orderList;
+
+    public Order() {
+        this.orderList = new ArrayList<>();
+    }
+
+    public Order(final List<SingleOrder> orderList) {
+        this.orderList = orderList;
+    }
 
     public void addToList(final SingleOrder singleOrder) {
         orderList.add(singleOrder);

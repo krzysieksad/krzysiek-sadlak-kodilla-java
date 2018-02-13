@@ -1,10 +1,15 @@
 package com.kodilla.food2door.order;
 
+import com.kodilla.food2door.producers.ExtraFoodShop;
+import com.kodilla.food2door.producers.GlutenFreeShop;
+import com.kodilla.food2door.producers.HealthyShop;
+import com.kodilla.food2door.producers.Producer;
 import com.kodilla.food2door.producers.ProducerId;
 import org.junit.Assert;
 import org.junit.Test;
-
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Map;
 
 public class OrderServiceTestSuite {
     private Order prepareOrder() {
@@ -27,11 +32,20 @@ public class OrderServiceTestSuite {
         return order;
     }
 
+    private Map<ProducerId, Producer> prepareProducers() {
+        Map<ProducerId, Producer> producerMap = new HashMap<>();
+        producerMap.put(ProducerId.EXTRA_FOOD_SHOP,new ExtraFoodShop());
+        producerMap.put(ProducerId.GLUTEN_FREE_SHOP,new GlutenFreeShop());
+        producerMap.put(ProducerId.HEALTHY_SHOP,new HealthyShop());
+
+        return producerMap;
+    }
+
     @Test
     public void testProcess() {
         //given
         Order order = prepareOrder();
-        OrderService orderService = new OrderService();
+        OrderService orderService = new OrderService(prepareProducers());
 
         //when
         OrderSummary orderSummary = orderService.processOrder(order);
