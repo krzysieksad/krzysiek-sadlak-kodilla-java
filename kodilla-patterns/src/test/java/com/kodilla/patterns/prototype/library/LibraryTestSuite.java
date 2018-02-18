@@ -19,8 +19,27 @@ public class LibraryTestSuite {
 
         //when
         prepareBooks(library);
+        Library clonedLibrary = null;
+        try {
+            clonedLibrary = library.shallowCopy();
+            clonedLibrary.setName("Cloned Library");
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        Library deepClonedLibrary = null;
+        try {
+            deepClonedLibrary = library.deepCopy();
+            deepClonedLibrary.setName("Third Library");
+        } catch (CloneNotSupportedException e) {
+            e.printStackTrace();
+        }
+
+        library.getBooks().add(new Book("New Book", "New Author", LocalDate.of(1990, 1, 5)));
 
         //then
-        Assert.assertEquals(20, library.getBooks().size());
+        Assert.assertEquals(21, library.getBooks().size());
+        Assert.assertEquals(21, clonedLibrary.getBooks().size());
+        Assert.assertEquals(20, deepClonedLibrary.getBooks().size());
     }
 }
