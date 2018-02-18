@@ -7,12 +7,12 @@ public class LoggerTestSuite {
     @Test
     public void getLastLog() {
         //given
-        Logger logger = new Logger();
+        Logger.getInstance();
 
         //when
-        logger.log("New log line.");
+        Logger.getInstance().log("New log line.");
 
         //then
-        Assert.assertEquals("New log line.", logger.getLastLog());
+        Assert.assertEquals("New log line.", Logger.getInstance().getLastLog());
     }
 }
