@@ -7,7 +7,6 @@ public class LoggerTestSuite {
     @Test
     public void getLastLog() {
         //given
-        Logger.getInstance();
 
         //when
         Logger.getInstance().log("New log line.");
