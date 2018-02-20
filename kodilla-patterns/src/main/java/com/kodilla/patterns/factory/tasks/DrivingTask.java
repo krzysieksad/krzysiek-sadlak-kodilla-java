@@ -1,18 +1,19 @@
 package com.kodilla.patterns.factory.tasks;
 
 public class DrivingTask implements Task {
-    private final String taskName;
+    private final TaskFactory.TaskTypes taskName;
     private final String where;
     private final String using;
     private boolean isTaskExecuted = false;
 
     /**
      * Task 11.4. Driving.
+     *
      * @param taskName name
-     * @param where destination
-     * @param using vehicle
+     * @param where    destination
+     * @param using    vehicle
      */
-    public DrivingTask(final String taskName, final String where, final String using) {
+    public DrivingTask(final TaskFactory.TaskTypes taskName, final String where, final String using) {
         this.taskName = taskName;
         this.where = where;
         this.using = using;
@@ -20,6 +21,7 @@ public class DrivingTask implements Task {
 
     /**
      * Execute task if it's not executed yet.
+     *
      * @return isDone
      */
     public boolean executeTask() {
@@ -32,7 +34,7 @@ public class DrivingTask implements Task {
         }
     }
 
-    public String getTaskName() {
+    public TaskFactory.TaskTypes getTaskName() {
         return taskName;
     }
 

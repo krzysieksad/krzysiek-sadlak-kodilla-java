@@ -1,18 +1,19 @@
 package com.kodilla.patterns.factory.tasks;
 
 public class ShoppingTask implements Task {
-    private final String taskName;
+    private final TaskFactory.TaskTypes taskName;
     private final String whatToBuy;
     private final double quantity;
     private boolean isTaskExecuted = false;
 
     /**
      * Task 11.4. Shopping.
-     * @param taskName name
+     *
+     * @param taskName  name
      * @param whatToBuy product
-     * @param quantity quantity
+     * @param quantity  quantity
      */
-    public ShoppingTask(final String taskName, final String whatToBuy, final double quantity) {
+    public ShoppingTask(final TaskFactory.TaskTypes taskName, final String whatToBuy, final double quantity) {
         this.taskName = taskName;
         this.whatToBuy = whatToBuy;
         this.quantity = quantity;
@@ -20,6 +21,7 @@ public class ShoppingTask implements Task {
 
     /**
      * Execute task if it's not executed yet.
+     *
      * @return isDone
      */
     public boolean executeTask() {
@@ -32,7 +34,7 @@ public class ShoppingTask implements Task {
         }
     }
 
-    public String getTaskName() {
+    public TaskFactory.TaskTypes getTaskName() {
         return taskName;
     }
 

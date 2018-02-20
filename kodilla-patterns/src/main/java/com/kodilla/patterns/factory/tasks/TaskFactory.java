@@ -1,25 +1,28 @@
 package com.kodilla.patterns.factory.tasks;
 
 public class TaskFactory {
-    public static final String SHOP = "ShoppingTask";
-    public static final String PAINT = "PaintingTask";
-    public static final String DRIVE = "DrivingTask";
+    public enum TaskTypes {
+        SHOPPING_TASK,
+        PAINTING_TASK,
+        DRIVING_TASK
+    }
 
     /**
      * Task 11.4. Creating tasks.
+     *
      * @param task taskClass
      * @return Task
      */
-    public Task createTask(final String task) {
+    public Task createTask(final TaskTypes task) {
         switch (task) {
-            case SHOP:
-                return new ShoppingTask("Shopping", "toys", 153);
-            case PAINT:
-                return new PaintingTask("Painting", "black", "Sleeping room");
-            case DRIVE:
-                return new DrivingTask("Driving", "Warsaw", "Train");
+            case SHOPPING_TASK:
+                return new ShoppingTask(TaskTypes.SHOPPING_TASK, "toys", 153);
+            case PAINTING_TASK:
+                return new PaintingTask(TaskTypes.PAINTING_TASK, "black", "Sleeping room");
+            case DRIVING_TASK:
+                return new DrivingTask(TaskTypes.DRIVING_TASK, "Warsaw", "Train");
             default:
-                return null;
+                throw new IllegalArgumentException();
         }
     }
 }
