@@ -3,6 +3,7 @@ package com.kodilla.jdbc;
 import org.junit.Assert;
 import org.junit.Test;
 
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
@@ -15,6 +16,16 @@ public class DbManagerTestSuite {
             counter++;
         }
         return counter;
+    }
+
+    private ResultSet searchForUsersWithFirstName(final String firstName) throws SQLException {
+        String selectString = "select * " +
+                "from users " +
+                "where firstname = ?";
+
+        PreparedStatement searchForUsers = DbManager.getInstance().getConnection().prepareStatement(selectString);
+        searchForUsers.setString(1, firstName);
+        return searchForUsers.executeQuery();
     }
 
     @Test
@@ -66,5 +77,29 @@ public class DbManagerTestSuite {
             }
             Assert.assertEquals(2, countResultSet(resultSet));
         }
+    }
+
+    @Test
+    public void testPreparedStatementsForJohn() throws SQLException {
+        //given
+        DbManager dbManager = DbManager.getInstance();
+
+        //when
+        ResultSet resultSet = searchForUsersWithFirstName("John");
+
+        //then
+        Assert.assertEquals(2, countResultSet(resultSet));
+    }
+
+    @Test
+    public void testPreparedStatementsForThomas() throws SQLException {
+        //given
+        DbManager dbManager = DbManager.getInstance();
+
+        //when
+        ResultSet resultSet = searchForUsersWithFirstName("Thomas");
+
+        //then
+        Assert.assertEquals(1, countResultSet(resultSet));
     }
 }
