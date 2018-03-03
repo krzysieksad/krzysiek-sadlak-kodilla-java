@@ -13,9 +13,9 @@ import java.util.List;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest
-public class TaskFinancialDetailsTestSuite {
+public class TaskFinancialDetailsDaoTestSuite {
     @Autowired
-    private TaskFinancialDetailsDao taskFinancialDetailsDao;
+    TaskFinancialDetailsDao taskFinancialDetailsDao;
 
     @Test
     public void testFindByPaid() {
@@ -26,6 +26,9 @@ public class TaskFinancialDetailsTestSuite {
 
         //When
         List<TaskFinancialDetails> resultList = taskFinancialDetailsDao.findByPaid(false);
+        for (TaskFinancialDetails result : resultList) {
+            System.out.println(result.getId());
+        }
 
         //Then
         Assert.assertEquals(1, resultList.size());
