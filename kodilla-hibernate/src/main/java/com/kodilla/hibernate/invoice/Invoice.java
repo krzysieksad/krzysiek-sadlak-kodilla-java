@@ -13,17 +13,17 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-@Table(name = "PRODUCTS")
-public class Product {
+@Table(name = "INVOICES")
+public class Invoice {
     private int id;
-    private String name;
-    private List<Item> itemList = new ArrayList<>();
+    private String number;
+    private List<Item> items = new ArrayList<>();
 
-    public Product() {
+    public Invoice() {
     }
 
-    public Product(final String name) {
-        this.name = name;
+    public Invoice(final String number) {
+        this.number = number;
     }
 
     @Id
@@ -34,31 +34,30 @@ public class Product {
         return id;
     }
 
-    @NotNull
-    @Column(name = "NAME", unique = true)
-    public String getName() {
-        return name;
+    @Column(name = "NUMBER", unique = true)
+    public String getNumber() {
+        return number;
     }
 
     @OneToMany(
             targetEntity = Item.class,
-            mappedBy = "product",
+            mappedBy = "invoice",
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY
     )
-    public List<Item> getItemList() {
-        return itemList;
+    public List<Item> getItems() {
+        return items;
     }
 
     public void setId(final int id) {
         this.id = id;
     }
 
-    public void setName(final String name) {
-        this.name = name;
+    public void setNumber(final String number) {
+        this.number = number;
     }
 
-    public void setItemList(final List<Item> itemList) {
-        this.itemList = itemList;
+    public void setItems(final List<Item> items) {
+        this.items = items;
     }
 }
