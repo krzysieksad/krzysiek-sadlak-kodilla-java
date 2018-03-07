@@ -31,6 +31,17 @@ public class InvoiceDaoTestSuite {
         Product cheese = new Product("Cheese");
         Product butter = new Product("Butter");
         Product bread = new Product("Bread");
+        productDao.save(bottledWater);
+        productDao.save(ham);
+        productDao.save(cheese);
+        productDao.save(butter);
+        productDao.save(bread);
+        int bottledWaterId = bottledWater.getId();
+        int hamId = ham.getId();
+        int cheeseId = cheese.getId();
+        int butterId = butter.getId();
+        int breadId = bread.getId();
+
         Item item1 = new Item(bottledWater, new BigDecimal(2), 10, new BigDecimal(20));
         Item item2 = new Item(ham, new BigDecimal(36.50), 2, new BigDecimal(73));
         Item item3 = new Item(butter, new BigDecimal(6), 2, new BigDecimal(12));
@@ -44,11 +55,6 @@ public class InvoiceDaoTestSuite {
         Invoice invoice2 = new Invoice("20180306/00002");
         Invoice invoice3 = new Invoice("20180306/00003");
 
-        bottledWater.getItemList().addAll(Arrays.asList(item1, item7));
-        ham.getItemList().addAll(Arrays.asList(item2, item5));
-        butter.getItemList().addAll(Arrays.asList(item3, item8));
-        bread.getItemList().add(item4);
-        cheese.getItemList().addAll(Arrays.asList(item6, item9));
         item1.setInvoice(invoice1);
         item2.setInvoice(invoice1);
         item3.setInvoice(invoice1);
@@ -81,6 +87,11 @@ public class InvoiceDaoTestSuite {
             invoiceDao.delete(invoice1Id);
             invoiceDao.delete(invoice2Id);
             invoiceDao.delete(invoice3Id);
+            productDao.delete(bottledWaterId);
+            productDao.delete(hamId);
+            productDao.delete(cheeseId);
+            productDao.delete(butterId);
+            productDao.delete(breadId);
         } catch (Exception e) {
             //nothing
         }
