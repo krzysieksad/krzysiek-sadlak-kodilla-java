@@ -15,7 +15,7 @@ import java.util.List;
 @NamedNativeQuery(
         name = "Company.findCompaniesByNamePart",
         query = "SELECT * FROM COMPANIES" +
-                " WHERE COMPANY_NAME LIKE CONCAT(:NAMEPART,'%')",
+                " WHERE LEFT(COMPANY_NAME, 3) = :NAMEPART",
         resultClass = Company.class
     )
 
