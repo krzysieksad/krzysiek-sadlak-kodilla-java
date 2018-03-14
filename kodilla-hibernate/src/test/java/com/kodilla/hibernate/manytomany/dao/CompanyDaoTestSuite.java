@@ -17,8 +17,6 @@ import java.util.List;
 public class CompanyDaoTestSuite {
     @Autowired
     CompanyDao companyDao;
-    @Autowired
-    EmployeeDao employeeDao;
 
     private List<Integer> prepareTestData() {
         Employee johnSmith = new Employee("John", "Smith");
