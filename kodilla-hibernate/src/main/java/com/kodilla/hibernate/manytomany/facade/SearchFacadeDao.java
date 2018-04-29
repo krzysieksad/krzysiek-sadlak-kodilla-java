@@ -1,4 +1,4 @@
-package com.kodilla.hibernate.manytomany.facade;
+/*package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
@@ -13,8 +13,8 @@ import java.util.List;
 @Transactional
 @Repository
 public interface SearchFacadeDao extends CrudRepository<Employee, Integer> {
-    /*@Query
-    List<Company> findCompaniesByNamePart(@Param("NAMEPART") String namePart);*/
+    @Query
+    List<Company> findCompaniesByNamePart(@Param("NAMEPART") String namePart);
     @Query
     List<Employee> findEmployeesWithLastNamePart(@Param("LASTNAMEPART") String lastNamePart);
-}
+}*/

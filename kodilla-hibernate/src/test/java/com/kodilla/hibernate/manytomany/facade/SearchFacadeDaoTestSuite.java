@@ -1,4 +1,4 @@
-package com.kodilla.hibernate.manytomany.facade;
+/*package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
@@ -17,7 +17,7 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SearchFacadeDaoTestSuite {
-    @Autowired
+    /*@Autowired
     EmployeeDao employeeDao;
     @Autowired
     CompanyDao companyDao;
@@ -60,7 +60,7 @@ public class SearchFacadeDaoTestSuite {
         companyIds.add(greenLight.getId());
 
         return companyIds;
-    }
+    }*/
 
     /*@Test
     public void testSearchForCompanyNamePart() {
@@ -81,7 +81,7 @@ public class SearchFacadeDaoTestSuite {
         } catch (Exception e) {
             //do nothing
         }
-    }*/
+    }
 
     @Test
     public void testSearchForEmployeesWithLastNamePart() {
@@ -103,4 +103,4 @@ public class SearchFacadeDaoTestSuite {
             //do nothing
         }
     }
-}
+}*/
