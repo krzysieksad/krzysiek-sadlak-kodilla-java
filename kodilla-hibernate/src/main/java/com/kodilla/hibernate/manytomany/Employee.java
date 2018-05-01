@@ -9,15 +9,22 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedQuery;
+import javax.persistence.NamedQueries;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
 import java.util.List;
 
-@NamedQuery(
-        name = "Employee.findEmployeesWithLastName",
-        query = "FROM Employee WHERE lastname = :LASTNAME"
-    )
+@NamedQueries({
+        @NamedQuery(
+                name = "Employee.findEmployeesWithLastName",
+                query = "FROM Employee WHERE lastname = :LASTNAME"
+        ),
+        @NamedQuery(
+                name = "Employee.findEmployeesByPartOfLastName",
+                query = "FROM Employee WHERE lastname like :LASTNAMEPART"
+        )
+    })
 
 @Entity
 @Table(name = "EMPLOYEES")

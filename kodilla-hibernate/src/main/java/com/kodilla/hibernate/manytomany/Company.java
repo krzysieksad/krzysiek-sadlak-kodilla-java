@@ -7,6 +7,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.NamedNativeQuery;
+import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.validation.constraints.NotNull;
 import java.util.ArrayList;
@@ -17,6 +18,10 @@ import java.util.List;
         query = "SELECT * FROM COMPANIES" +
                 " WHERE LEFT(COMPANY_NAME, 3) = :NAMEPART",
         resultClass = Company.class
+    )
+@NamedQuery(
+        name = "Company.findCompaniesByPartOfName",
+        query = "FROM Company WHERE name like :PARTOFNAME"
     )
 
 @Entity

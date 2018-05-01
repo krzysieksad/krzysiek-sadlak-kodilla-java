@@ -1,4 +1,4 @@
-/*package com.kodilla.hibernate.manytomany.facade;
+package com.kodilla.hibernate.manytomany.facade;
 
 import com.kodilla.hibernate.manytomany.Company;
 import com.kodilla.hibernate.manytomany.Employee;
@@ -17,12 +17,12 @@ import java.util.List;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class SearchFacadeDaoTestSuite {
-    /*@Autowired
+    @Autowired
     EmployeeDao employeeDao;
     @Autowired
     CompanyDao companyDao;
     @Autowired
-    SearchFacadeDao searchFacadeDao;
+    SearchFacade searchFacade;
 
     private List<Integer> prepareTestData() {
         Employee johnSmith = new Employee("John", "Smith");
@@ -60,15 +60,15 @@ public class SearchFacadeDaoTestSuite {
         companyIds.add(greenLight.getId());
 
         return companyIds;
-    }*/
+    }
 
-    /*@Test
+    @Test
     public void testSearchForCompanyNamePart() {
         //Given
         List<Integer> companyIds = prepareTestData();
 
         //When
-        List<Company> companies = searchFacadeDao.findCompaniesByNamePart("%Ma%");
+        List<Company> companies = searchFacade.findCompaniesByPartOfName("%Ma%");
 
         //Then
         Assert.assertEquals(3, companies.size());
@@ -89,7 +89,7 @@ public class SearchFacadeDaoTestSuite {
         List<Integer> employeeIds = prepareTestData();
 
         //When
-        List<Employee> employees = searchFacadeDao.findEmployeesWithLastNamePart("%l%");
+        List<Employee> employees = searchFacade.findEmployeesByPartOfLastName("%l%");
 
         //Then
         Assert.assertEquals(2, employees.size());
@@ -103,4 +103,4 @@ public class SearchFacadeDaoTestSuite {
             //do nothing
         }
     }
-}*/
+}
