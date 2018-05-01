@@ -21,17 +21,17 @@ public class ParticipantTasks implements Observable {
         this.tasks = new ArrayDeque<>();
     }
 
-    public addTask(final String task) {
-        tasks.add(task);
-        notifyObservers();
-    }
-
     public String getParticipantName() {
         return participantName;
     }
 
     public Queue<String> getTasks() {
         return tasks;
+    }
+
+    public void addTask(final String task) {
+        tasks.offer(task);
+        notifyObservers();
     }
 
     @Override
