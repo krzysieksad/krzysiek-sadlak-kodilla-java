@@ -1,5 +1,6 @@
 package com.kodilla.patterns2.aop.calculator;
 
+import com.kodilla.patterns2.facade.api.OrderDto;
 import org.aspectj.lang.ProceedingJoinPoint;
 import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
@@ -47,5 +48,11 @@ public class Watcher {
             throw throwable;
         }
         return result;
+    }
+
+    @Before("execution(* com.kodilla.patterns2.facade.api.OrderFacade.processOrder(..))" +
+            "&& args(order, user)")
+    public void logFacadeEvent(final OrderDto order, final Long user) {
+        LOGGER.info("Processing the order for user " + user + ". Items quantity in order: " + order.getItems().size());
     }
 }
