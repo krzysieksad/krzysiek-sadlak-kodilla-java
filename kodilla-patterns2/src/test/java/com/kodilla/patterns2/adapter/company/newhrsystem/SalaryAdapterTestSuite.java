@@ -1,5 +1,6 @@
 package com.kodilla.patterns2.adapter.company.newhrsystem;
 
+import com.kodilla.patterns2.adapter.company.SalaryAdapter;
 import com.kodilla.patterns2.adapter.company.oldhrsystem.Workers;
 import org.junit.Test;
 

@@ -1,6 +1,6 @@
-package com.kodilla.patterns2.adapter.company.newhrsystem;
+package com.kodilla.patterns2.adapter.company;
 
-import com.kodilla.patterns2.adapter.company.SalaryAdaptee;
+import com.kodilla.patterns2.adapter.company.newhrsystem.Employee;
 import com.kodilla.patterns2.adapter.company.oldhrsystem.SalaryCalculator;
 
 import java.math.BigDecimal;
