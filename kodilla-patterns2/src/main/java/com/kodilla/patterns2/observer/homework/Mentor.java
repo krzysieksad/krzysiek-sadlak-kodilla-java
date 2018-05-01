@@ -1,7 +1,5 @@
 package com.kodilla.patterns2.observer.homework;
 
-import com.kodilla.patterns2.observer.homework.Observer;
-
 public class Mentor implements Observer {
     private final String mentor;
     private int updateCount;
@@ -12,12 +10,12 @@ public class Mentor implements Observer {
 
     @Override
     public void update(final ParticipantTasks participantTasks) {
-        System.out.println(mentor + ": New tasks from " + forumTopic.getName() + "\n" + " (total: " + forumTopic.getMessages().size() + " messages)");
+        System.out.println(mentor + ": New tasks from " + participantTasks.getParticipantName());
         updateCount++;
     }
 
-    public String getUsername() {
-        return username;
+    public String getMentor() {
+        return mentor;
     }
 
     public int getUpdateCount() {
