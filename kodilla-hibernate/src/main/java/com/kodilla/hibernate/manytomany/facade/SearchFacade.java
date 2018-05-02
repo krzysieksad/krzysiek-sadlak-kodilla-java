@@ -20,7 +20,7 @@ public class SearchFacade {
         return companyDao.findCompaniesByPartOfName(partOfName);
     }
 
-    public List<Employee> findEmployeesByPartOfLastName(final String lastNamePart) {
-        return employeeDao.findEmployeesByPartOfLastName(lastNamePart);
+    public List<Employee> findEmployeesByPartOfName(final String namePart) {
+        return employeeDao.findEmployeesByPartOfName(namePart);
     }
 }

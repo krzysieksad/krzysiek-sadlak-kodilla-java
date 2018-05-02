@@ -25,9 +25,9 @@ public class SearchFacadeDaoTestSuite {
     SearchFacade searchFacade;
 
     private List<Integer> prepareTestData() {
-        Employee johnSmith = new Employee("John", "Smith");
+        Employee johnSmith = new Employee("John", "Bronson");
         Employee stephanieClarckson = new Employee("Stephanie", "Clarckson");
-        Employee lindaKovalsky = new Employee("Linda", "Kovalsky");
+        Employee lindaKovalsky = new Employee("Sonny", "Kovalsky");
 
         Company softwareMachine = new Company("Software Machine");
         Company dataMaesters = new Company("Data Maesters");
@@ -84,15 +84,15 @@ public class SearchFacadeDaoTestSuite {
     }
 
     @Test
-    public void testSearchForEmployeesWithLastNamePart() {
+    public void testSearchForEmployeesWithNamePart() {
         //Given
         List<Integer> employeeIds = prepareTestData();
 
         //When
-        List<Employee> employees = searchFacade.findEmployeesByPartOfLastName("%l%");
+        List<Employee> employees = searchFacade.findEmployeesByPartOfName("%son%");
 
         //Then
-        Assert.assertEquals(2, employees.size());
+        Assert.assertEquals(3, employees.size());
 
         //CleanUp
         try {
