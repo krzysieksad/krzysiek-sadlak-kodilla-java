@@ -9,8 +9,8 @@ public class Mentor implements Observer {
     }
 
     @Override
-    public void update(final ParticipantTasks participantTasks) {
-        System.out.println(mentor + ": New tasks from " + participantTasks.getParticipantName());
+    public void update(final TasksForMentor tasksForMentor) {
+        System.out.println(mentor + ": New tasks from " + tasksForMentor.getParticipantName());
         updateCount++;
     }
 
@@ -20,5 +20,9 @@ public class Mentor implements Observer {
 
     public int getUpdateCount() {
         return updateCount;
+    }
+
+    public String getNextTaskFromParticipant(final TasksForMentor tasksForMentor) {
+        return tasksForMentor.getTasks().poll();
     }
 }

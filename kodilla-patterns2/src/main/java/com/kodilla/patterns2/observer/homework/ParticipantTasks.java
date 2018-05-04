@@ -5,7 +5,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Queue;
 
-public class ParticipantTasks implements Observable {
+public class ParticipantTasks implements Observable, TasksForMentor {
     private final List<Observer> observers;
     private final String participantName;
     private final Queue<String> tasks;
