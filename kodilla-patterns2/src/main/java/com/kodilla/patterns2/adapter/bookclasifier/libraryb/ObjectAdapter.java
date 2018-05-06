@@ -11,8 +11,8 @@ import java.util.Set;
 public class ObjectAdapter implements Classifier {
     private MedianAdaptee medianAdaptee;
 
-    public ObjectAdapter() {
-        this.medianAdaptee = new MedianAdaptee();
+    public ObjectAdapter(final MedianAdaptee medianAdaptee) {
+        this.medianAdaptee = medianAdaptee;
     }
 
     @Override

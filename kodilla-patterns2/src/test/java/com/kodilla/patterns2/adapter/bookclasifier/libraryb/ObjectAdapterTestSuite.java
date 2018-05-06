@@ -1,5 +1,6 @@
 package com.kodilla.patterns2.adapter.bookclasifier.libraryb;
 
+import com.kodilla.patterns2.adapter.bookclasifier.MedianAdaptee;
 import com.kodilla.patterns2.adapter.bookclasifier.librarya.Book;
 import org.junit.Test;
 
@@ -12,7 +13,8 @@ public class ObjectAdapterTestSuite {
     @Test
     public void publicationYearMedianTest() {
         //given
-        ObjectAdapter objectAdapter = new ObjectAdapter();
+        MedianAdaptee medianAdaptee = new MedianAdaptee();
+        ObjectAdapter objectAdapter = new ObjectAdapter(medianAdaptee);
         Set<com.kodilla.patterns2.adapter.bookclasifier.librarya.Book> bookSet = new HashSet<>();
         bookSet.add(new com.kodilla.patterns2.adapter.bookclasifier.librarya.Book("author1", "title1", 1985, "signature1"));
         bookSet.add(new com.kodilla.patterns2.adapter.bookclasifier.librarya.Book("author2", "title2", 1054, "signature2"));
