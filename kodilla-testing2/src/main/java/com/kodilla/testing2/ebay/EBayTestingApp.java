@@ -6,8 +6,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class EBayTestingApp {
-    public static final String SEARCHFIELD = "gh-ac";
+    private static final String SEARCHFIELD = "gh-ac";
 
+    /**
+     * Task 23.2. Selenium test
+     *
+     * @param args args
+     */
     public static void main(final String[] args) {
         WebDriver driver = WebDriverConfig.getDriver(WebDriverConfig.CHROME);
         driver.get("https://www.ebay.com");

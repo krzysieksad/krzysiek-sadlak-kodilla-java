@@ -6,7 +6,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class GoogleTestingApp {
-    public static final String SEARCHFIELD = "lst-ib";
+    private static final String SEARCHFIELD = "lst-ib";
 
     /**
      * Submodule 23.2. Selenium test
