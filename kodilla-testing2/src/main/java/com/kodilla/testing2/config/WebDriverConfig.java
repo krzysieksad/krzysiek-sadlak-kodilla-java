@@ -5,8 +5,8 @@ import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 public class WebDriverConfig {
-    public final static String FIREFOX = "FIREFOX_DRIVER";
-    public final static String CHROME = "CHROME_DRIVER";
+    public static final String FIREFOX = "FIREFOX_DRIVER";
+    public static final String CHROME = "CHROME_DRIVER";
 
     /**
      * Submodule 23.2. Get browser driver.
