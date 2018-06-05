@@ -7,9 +7,9 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.Select;
 
 public class FacebookTestingApp {
-    private static final String XPATH_YEAR = "//div[@class=\"_5k_5\"]/span/span/select[3]";
-    private static final String XPATH_MONTH = "//div[@class=\"_5k_5\"]/span/span/select[2]";
-    private static final String XPATH_DAY = "//div[@class=\"_5k_5\"]/span/span/select[1]";
+    private static final String XPATH_YEAR = "//div[@class=\"_5k_5\"]/span/span/select[@id=\"year\"]";
+    private static final String XPATH_MONTH = "//div[@class=\"_5k_5\"]/span/span/select[@id=\"month\"]";
+    private static final String XPATH_DAY = "//div[@class=\"_5k_5\"]/span/span/select[@id=\"day\"]";
 
     /**
      * Task 23.3. Facebook
