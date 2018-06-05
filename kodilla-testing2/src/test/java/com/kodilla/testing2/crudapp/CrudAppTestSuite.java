@@ -4,12 +4,14 @@ import com.kodilla.testing2.config.WebDriverConfig;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.openqa.selenium.Alert;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.util.List;
 import java.util.Random;
 import java.util.stream.Collectors;
 
@@ -104,10 +106,26 @@ public class CrudAppTestSuite {
         return result;
     }
 
+    private void deleteTask(final String taskName) throws InterruptedException {
+        WebDriverWait wait = new WebDriverWait(driver, 1);
+        wait.until(ExpectedConditions.alertIsPresent());
+        Alert alert = driver.switchTo().alert();
+        alert.accept();
+
+        driver.findElements(By.xpath("//form[@class=\"datatable__row\"]")).stream()
+                .filter(anyForm -> anyForm.findElement(By.xpath(".//p[@class=\"datatable__field-value\"]")).getText().equals(taskName))
+                .forEach(theForm -> {
+                    WebElement buttonDelete = theForm.findElement(By.xpath(".//button[contains(text(), \"Delete\")]"));
+                    buttonDelete.click();
+                });
+        Thread.sleep(2000);
+    }
+
     @Test
     public void shouldCreateTrelloCard() throws InterruptedException {
         String taskName = createCrudAppTestTask();
         sendTestTaskToTrello(taskName);
         assertTrue(checkTaskExistsInTrello(taskName));
+        deleteTask(taskName);
     }
 }
